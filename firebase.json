@@ -16,7 +16,6 @@
   },
   "functions": {
     "source": "functions",
-    "location": "africa-south1",
     "ignore": [
       "node_modules",
       ".git",

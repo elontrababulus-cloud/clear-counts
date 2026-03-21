@@ -39,7 +39,7 @@ export const checkOverdue = onSchedule(
     schedule: '0 6 * * *',
     timeZone: 'Africa/Harare',
     memory: '256MiB',
-    region: 'africa-south1',
+    region: 'us-central1',
   },
   async () => {
     const now = Timestamp.now();
