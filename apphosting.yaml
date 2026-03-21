@@ -9,19 +9,19 @@ env:
     value: production
 
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    secret: FIREBASE_API_KEY
+    value: AIzaSyD_uYREUJf6zUEgApCJEfiN9NkipEX80Q0
 
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    secret: FIREBASE_AUTH_DOMAIN
+    value: clear-counts.firebaseapp.com
 
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    secret: FIREBASE_PROJECT_ID
+    value: clear-counts
 
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    secret: FIREBASE_STORAGE_BUCKET
+    value: clear-counts.firebasestorage.app
 
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    secret: FIREBASE_MESSAGING_SENDER_ID
+    value: "278147184144"
 
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    secret: FIREBASE_APP_ID
+    value: 1:278147184144:web:9220b2b2be68e92d7c7c95
