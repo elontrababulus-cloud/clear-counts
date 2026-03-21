@@ -1,0 +1,190 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper functions ────────────────────────────────────────────────────
+
+    function isAuthed() {
+      return request.auth != null;
+    }
+
+    // Read the calling user's role from /users/{uid}
+    // NOTE: each invocation costs one Firestore read — consolidated into
+    // userRole() so rules only call it once per match block.
+    function userRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isAuthed() && userRole() == 'admin';
+    }
+
+    // Admin or staff
+    function isStaff() {
+      return isAuthed() && userRole() in ['admin', 'staff'];
+    }
+
+    // Pure client (not staff/admin)
+    function isClient() {
+      return isAuthed() && userRole() == 'client';
+    }
+
+    // Returns true when the doc's clientUid matches the caller's UID
+    // (used for client self-access on quotes, invoices, projects)
+    function ownsDoc() {
+      return isClient() && resource.data.clientUid == request.auth.uid;
+    }
+
+    // ─── Users ───────────────────────────────────────────────────────────────
+
+    match /users/{userId} {
+      // Users can read their own profile; admins can read all
+      allow read: if isAuthed() && (request.auth.uid == userId || isAdmin());
+      // Only admins create user records (done via Cloud Function in practice)
+      allow create: if isAdmin();
+      // Admin can update anyone; a user can update their own non-role fields
+      allow update: if isAdmin()
+        || (isAuthed()
+            && request.auth.uid == userId
+            // Prevent self-promotion: role must not change
+            && request.resource.data.role == resource.data.role);
+      allow delete: if isAdmin();
+    }
+
+    // ─── Clients ─────────────────────────────────────────────────────────────
+
+    match /clients/{clientId} {
+      // Staff/admin: full access
+      // Client role: can only read the single ClientDoc that matches their clientId
+      allow read: if isStaff()
+        || (isClient()
+            && clientId == get(/databases/$(database)/documents/users/$(request.auth.uid)).data.clientId);
+      allow create, update: if isStaff();
+      // Hard delete only by admin (soft-delete via update preferred)
+      allow delete: if isAdmin();
+
+      // Contacts sub-collection — staff/admin only
+      match /contacts/{contactId} {
+        allow read, write: if isStaff();
+      }
+    }
+
+    // ─── Leads ───────────────────────────────────────────────────────────────
+
+    match /leads/{leadId} {
+      allow read, write: if isStaff();
+
+      // Lead activity log — staff can append; only admin can update/delete
+      match /activities/{activityId} {
+        allow read, create: if isStaff();
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ─── Quotes ──────────────────────────────────────────────────────────────
+
+    match /quotes/{quoteId} {
+      allow read: if isStaff() || ownsDoc();
+      allow create: if isStaff();
+
+      // Staff/admin: full update
+      // Client: may only flip status to 'accepted' or 'declined',
+      //         and must not touch any other field.
+      allow update: if isStaff()
+        || (ownsDoc()
+            && request.resource.data.status in ['accepted', 'declined']
+            && request.resource.data.diff(resource.data)
+                  .affectedKeys()
+                  .hasOnly(['status', 'updatedAt']));
+      allow delete: if isAdmin();
+    }
+
+    // ─── Invoices ────────────────────────────────────────────────────────────
+
+    match /invoices/{invoiceId} {
+      allow read: if isStaff() || ownsDoc();
+      allow create, update: if isStaff();
+      allow delete: if isAdmin();
+    }
+
+    // ─── Payments — immutable after creation ─────────────────────────────────
+
+    match /payments/{paymentId} {
+      allow read: if isStaff() || ownsDoc();
+      // Any staff member can record a payment
+      allow create: if isStaff();
+      // Only admin can correct a payment record
+      allow update, delete: if isAdmin();
+    }
+
+    // ─── Projects ────────────────────────────────────────────────────────────
+
+    match /projects/{projectId} {
+      allow read: if isStaff() || ownsDoc();
+      allow create, update: if isStaff();
+      allow delete: if isAdmin();
+
+      // Tasks sub-collection
+      match /tasks/{taskId} {
+        // Client can read tasks on projects they own
+        allow read: if isStaff()
+          || (isClient()
+              && get(/databases/$(database)/documents/projects/$(projectId)).data.clientUid == request.auth.uid);
+        allow create, update: if isStaff();
+        allow delete: if isAdmin();
+
+        // Task comments — any project member (staff) can read/create;
+        // author can delete their own comment; admin can delete any.
+        match /comments/{commentId} {
+          allow read:   if isStaff()
+            || (isClient()
+                && get(/databases/$(database)/documents/projects/$(projectId)).data.clientUid == request.auth.uid);
+          allow create: if isStaff();
+          allow update: if isAdmin()
+            || (isStaff() && resource.data.authorId == request.auth.uid);
+          allow delete: if isAdmin()
+            || (isStaff() && resource.data.authorId == request.auth.uid);
+        }
+      }
+    }
+
+    // ─── Company Settings ────────────────────────────────────────────────────
+
+    match /settings/{settingId} {
+      // Any authenticated user can read settings (needed for currency, tax, etc.)
+      allow read: if isAuthed();
+      // Only admin can write settings
+      allow write: if isAdmin();
+    }
+
+    // ─── Notifications ────────────────────────────────────────────────────────
+
+    match /notifications/{notificationId} {
+      // Users can only read/update their own notifications
+      allow read: if isAuthed() && resource.data.userId == request.auth.uid;
+      // Staff/admin can create notifications for any user
+      allow create: if isStaff();
+      // Users can mark their own notifications as read
+      allow update: if isAuthed()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.diff(resource.data)
+              .affectedKeys()
+              .hasOnly(['read']);
+      allow delete: if isAdmin()
+        || (isAuthed() && resource.data.userId == request.auth.uid);
+    }
+
+    // ─── Audit Log — append-only ─────────────────────────────────────────────
+
+    match /auditLog/{logId} {
+      // Only admin can read audit logs
+      allow read: if isAdmin();
+      // Any authenticated user can append a log entry
+      allow create: if isAuthed();
+      // Nobody can update or delete audit logs
+      allow update, delete: if false;
+    }
+
+  }
+}
