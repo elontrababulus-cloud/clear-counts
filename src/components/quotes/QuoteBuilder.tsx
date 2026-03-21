@@ -22,7 +22,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { LineItemTable, computeTotal } from './LineItemTable';
-import { QuotePDFExport } from './QuotePDFExport';
+import dynamic from 'next/dynamic';
+const QuotePDFExport = dynamic(() => import('./QuotePDFExport').then(m => m.QuotePDFExport), { ssr: false });
 import { cn } from '@/lib/utils';
 
 // ─── Styles ───────────────────────────────────────────────────────────────────

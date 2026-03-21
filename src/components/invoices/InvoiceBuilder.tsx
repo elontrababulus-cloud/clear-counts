@@ -23,7 +23,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { LineItemTable, computeTotal } from '@/components/quotes/LineItemTable';
-import { InvoicePDFExport } from './InvoicePDFExport';
+import dynamic from 'next/dynamic';
+const InvoicePDFExport = dynamic(() => import('./InvoicePDFExport').then(m => m.InvoicePDFExport), { ssr: false });
 import { cn } from '@/lib/utils';
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
