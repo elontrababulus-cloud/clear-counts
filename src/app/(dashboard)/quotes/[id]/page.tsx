@@ -10,6 +10,7 @@ import {
   XCircle,
   RefreshCw,
   FileText,
+  Mail,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
@@ -30,6 +31,7 @@ import { QuotePreview } from '@/components/quotes/QuotePreview';
 const QuotePDFExport = dynamic(() => import('@/components/quotes/QuotePDFExport').then(m => m.QuotePDFExport), { ssr: false });
 import { QuoteBuilder } from '@/components/quotes/QuoteBuilder';
 import { QUOTE_STATUS_META } from '@/components/quotes/QuotesList';
+import { SendEmailModal } from '@/components/shared/SendEmailModal';
 import { cn } from '@/lib/utils';
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -46,6 +48,7 @@ export default function QuoteDetailPage({
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [working, setWorking] = useState(false);
+  const [emailOpen, setEmailOpen] = useState(false);
 
   useEffect(() => {
     const unsub = subscribeToDoc<QuoteDoc>('quotes', id, (data) => {
@@ -195,6 +198,14 @@ export default function QuoteDetailPage({
           {/* PDF download */}
           <QuotePDFExport quote={quote} />
 
+          {/* Send by email */}
+          {isStaff && quote.status !== 'draft' && (
+            <Button size="sm" variant="outline" onClick={() => setEmailOpen(true)}>
+              <Mail className="h-3.5 w-3.5 mr-1" />
+              Send by Email
+            </Button>
+          )}
+
           {/* Status workflow — admin/staff only */}
           {isStaff && (
             <>
@@ -278,6 +289,17 @@ export default function QuoteDetailPage({
       <div className="overflow-x-auto">
         <QuotePreview quote={quote} inline />
       </div>
+
+      {/* Send by Email modal */}
+      <SendEmailModal
+        open={emailOpen}
+        onOpenChange={setEmailOpen}
+        docId={quote.id}
+        docType="quote"
+        docNumber={quote.quoteNumber}
+        defaultEmail={quote.clientEmail ?? ''}
+        defaultName={quote.clientName ?? ''}
+      />
     </div>
   );
 }

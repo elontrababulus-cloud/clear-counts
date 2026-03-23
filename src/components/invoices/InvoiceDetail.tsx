@@ -9,6 +9,7 @@ import {
   CreditCard,
   CheckCircle,
   Trash2,
+  Mail,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { softDelete, update } from '@/lib/firestore/helpers';
@@ -22,6 +23,7 @@ const InvoicePDFExport = dynamic(() => import('./InvoicePDFExport').then(m => m.
 import { RecordPaymentModal } from './RecordPaymentModal';
 import { PaymentHistoryTable } from './PaymentHistoryTable';
 import { InvoiceBuilder } from './InvoiceBuilder';
+import { SendEmailModal } from '@/components/shared/SendEmailModal';
 import { cn } from '@/lib/utils';
 
 // ─── Status badge metadata ────────────────────────────────────────────────────
@@ -48,6 +50,7 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
   const router = useRouter();
   const [paymentOpen, setPaymentOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [emailOpen, setEmailOpen] = useState(false);
 
   const isStaff = role === 'admin' || role === 'staff';
   const canEdit = invoice.status === 'draft';
@@ -136,6 +139,13 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
         <div className="flex items-center gap-2 flex-wrap">
           <InvoicePDFExport invoice={invoice} />
 
+          {isStaff && invoice.status !== 'draft' && (
+            <Button size="sm" variant="outline" onClick={() => setEmailOpen(true)}>
+              <Mail className="h-3.5 w-3.5 mr-1" />
+              Send by Email
+            </Button>
+          )}
+
           {isStaff && canPay && (
             <Button size="sm" onClick={() => setPaymentOpen(true)}>
               <CreditCard className="h-3.5 w-3.5 mr-1" />
@@ -220,6 +230,17 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
         open={paymentOpen}
         onOpenChange={setPaymentOpen}
         invoice={invoice}
+      />
+
+      {/* Send by Email modal */}
+      <SendEmailModal
+        open={emailOpen}
+        onOpenChange={setEmailOpen}
+        docId={invoice.id}
+        docType="invoice"
+        docNumber={invoice.invoiceNumber}
+        defaultEmail={invoice.clientEmail ?? ''}
+        defaultName={invoice.clientName ?? ''}
       />
     </div>
   );

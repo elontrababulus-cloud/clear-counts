@@ -8,9 +8,20 @@
 
 import { initializeApp } from 'firebase-admin/app';
 
-// Initialize the Firebase Admin SDK (uses Application Default Credentials
-// in production; uses the emulator when FIREBASE_EMULATOR_HOST is set).
 initializeApp();
 
 // ── Invoices ──────────────────────────────────────────────────────────────────
 export { checkOverdue } from './invoices/checkOverdue';
+
+// ── Audit Log — onWrite triggers for key collections ─────────────────────────
+export {
+  auditInvoices,
+  auditQuotes,
+  auditClients,
+  auditProjects,
+  auditPayments,
+  auditLeads,
+} from './audit/logChanges';
+
+// ── Email delivery ────────────────────────────────────────────────────────────
+export { sendDocumentEmail } from './email/sendDocumentEmail';

@@ -132,6 +132,7 @@ export interface QuoteDoc {
   /** Firebase Auth UID of the client user — used for client-side access control */
   clientUid: string;
   clientName: string;
+  clientEmail?: string;
   lineItems: LineItem[];
   subtotal: number;
   discount: number;
@@ -167,6 +168,7 @@ export interface InvoiceDoc {
   /** Firebase Auth UID of the client user */
   clientUid: string;
   clientName: string;
+  clientEmail?: string;
   /** Set when invoice was converted from a quote */
   quoteId?: string;
   lineItems: LineItem[];

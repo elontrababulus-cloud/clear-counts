@@ -29,8 +29,13 @@ import {
   type Unsubscribe,
   type DocumentData,
 } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase';
 import type { InvoiceDoc, InvoiceStatus, PaymentDoc, CompanySettings } from '@/types';
+
+/** Current authenticated user's UID, or null when called outside auth context */
+function currentUid(): string | null {
+  return auth.currentUser?.uid ?? null;
+}
 
 // ─── Internal path utilities ──────────────────────────────────────────────────
 
@@ -169,10 +174,14 @@ export async function create<T>(
   collectionPath: string,
   data: Omit<T, 'id' | 'createdAt' | 'updatedAt'>,
 ): Promise<string> {
+  const uid = currentUid();
   const payload: DocumentData = {
     ...data,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
+    // Only inject if not already provided by the caller
+    ...(!('createdBy' in (data as object)) && uid ? { createdBy: uid } : {}),
+    updatedBy: uid,
   };
   const ref = await addDoc(colRef(collectionPath), payload);
   return ref.id;
@@ -204,7 +213,11 @@ export async function update<T>(
   id: string,
   data: Partial<Omit<T, 'id' | 'createdAt'>>,
 ): Promise<void> {
-  const payload: DocumentData = { ...data, updatedAt: serverTimestamp() };
+  const payload: DocumentData = {
+    ...data,
+    updatedAt: serverTimestamp(),
+    updatedBy: currentUid(),
+  };
   await updateDoc(docRef(collectionPath, id), payload);
 }
 
@@ -220,6 +233,7 @@ export async function softDelete(
     status: 'deleted',
     deletedAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
+    updatedBy: currentUid(),
   });
 }
 

@@ -1,0 +1,46 @@
+{
+  "name": "ClearCounts CRM",
+  "short_name": "ClearCounts",
+  "description": "Business management — clients, invoices, projects & leads",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Invoice",
+      "short_name": "Invoice",
+      "description": "Create a new invoice",
+      "url": "/invoices/new"
+    },
+    {
+      "name": "New Quote",
+      "short_name": "Quote",
+      "description": "Create a new quote",
+      "url": "/quotes/new"
+    },
+    {
+      "name": "Clients",
+      "short_name": "Clients",
+      "description": "View all clients",
+      "url": "/clients"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"]
+}

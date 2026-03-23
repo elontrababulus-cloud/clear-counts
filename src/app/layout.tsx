@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Providers from '@/components/Providers';
@@ -15,8 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Clearcounts CRM',
-  description: 'Business management for modern teams',
+  title: {
+    default: 'ClearCounts CRM',
+    template: '%s | ClearCounts',
+  },
+  description: 'Business management — clients, invoices, projects & leads',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'ClearCounts',
+  },
+  formatDetection: { telephone: false },
+  openGraph: {
+    type: 'website',
+    title: 'ClearCounts CRM',
+    description: 'Business management — clients, invoices, projects & leads',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#2563eb',
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
 };
 
 export default function RootLayout({
@@ -27,6 +49,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
       <body className="h-full">
         <Providers>{children}</Providers>
         <Toaster richColors position="top-right" />
