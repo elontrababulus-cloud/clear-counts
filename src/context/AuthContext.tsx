@@ -29,7 +29,7 @@ export interface UserDoc {
   email: string;
   displayName?: string;
   role: Role;
-  photoURL?: string;
+  photoURL: string | null;
   createdAt?: Timestamp;
   [key: string]: unknown;
 }

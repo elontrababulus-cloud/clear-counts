@@ -1,0 +1,35 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper to check if user is authenticated
+    function isAuthed() {
+      return request.auth != null;
+    }
+
+    // Helper to check if user is an admin - we have to check Firestore for this
+    // Note: get() on firestore documents is supported in Storage rules!
+    function isAdmin() {
+      return isAuthed() && 
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    match /settings/{allPaths=**} {
+      // All logged in users can see company logos/branding
+      allow read: if isAuthed();
+      // Only admins can update company branding
+      allow write: if isAdmin();
+    }
+
+    match /clients/{clientId}/{allPaths=**} {
+      // Staff can manage client documents
+      allow read, write: if isAuthed(); 
+    }
+
+    match /users/{userId}/{allPaths=**} {
+      // Users can manage their own profile photos
+      allow read: if isAuthed();
+      allow write: if isAuthed() && request.auth.uid == userId;
+    }
+  }
+}
