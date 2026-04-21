@@ -46,16 +46,17 @@ service cloud.firestore {
     // ─── Users ───────────────────────────────────────────────────────────────
 
     match /users/{userId} {
-      allow read: if isAuthed() && (request.auth.uid == userId || isAdmin());
-      // Allow self-creation; specific role-assignment logic is handled on first sign-in
-      // via AuthContext, but rules ensure they can't self-promote.
+      // Allow all authenticated users to read profiles (needed for staff list and first-user check)
+      allow read: if isAuthed();
+      
+      // Allow self-creation;Techcess Technology can self-promote to admin, others default to staff
       allow create: if isAuthed() && request.auth.uid == userId
         && validCreatedBy()
         && (
-          !('role' in request.resource.data)
-          || request.resource.data.role == 'staff'
-          || isAdmin()
+          request.resource.data.role in ['staff', 'client']
+          || (request.resource.data.role == 'admin' && request.auth.token.email == 'techcesstechnology@gmail.com')
         );
+        
       // Admin can update anyone; a user can update their own non-role fields
       allow update: if isAdmin()
         || (isAuthed()

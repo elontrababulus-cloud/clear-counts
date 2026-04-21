@@ -66,8 +66,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // Check if this is the first user in the system
             const usersQuery = query(collection(db, 'users'), limit(1));
             const usersSnap = await getDocs(usersQuery);
+            
+            // techcesstechnology@gmail.com is always boosted to admin if missing
+            const isSuperAdmin = firebaseUser.email === 'techcesstechnology@gmail.com';
             const isFirstUser = usersSnap.empty;
-            const newRole: Role = isFirstUser ? 'admin' : 'staff';
+            const newRole: Role = (isFirstUser || isSuperAdmin) ? 'admin' : 'staff';
 
             const newUserData: UserDoc = {
               uid: firebaseUser.uid,
@@ -83,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setRole(newRole);
           }
         } catch (err) {
-          console.error('Error fetching/creating user doc:', err);
+          console.error('[AuthContext] Error syncing user profile:', err);
           setUserDoc(null);
           setRole(null);
         }
