@@ -78,7 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               email: firebaseUser.email ?? '',
               displayName: firebaseUser.displayName ?? '',
               role: newRole,
-              photoURL: firebaseUser.photoURL ?? undefined,
+              photoURL: firebaseUser.photoURL ?? null,
               createdAt: serverTimestamp() as unknown as Timestamp,
             };
 
