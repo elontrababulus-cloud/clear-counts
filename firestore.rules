@@ -49,13 +49,8 @@ service cloud.firestore {
       // Allow all authenticated users to read profiles (needed for staff list and first-user check)
       allow read: if isAuthed();
       
-      // Allow self-creation;Techcess Technology can self-promote to admin, others default to staff
-      allow create: if isAuthed() && request.auth.uid == userId
-        && validCreatedBy()
-        && (
-          request.resource.data.role in ['staff', 'client']
-          || (request.resource.data.role == 'admin' && request.auth.token.email == 'techcesstechnology@gmail.com')
-        );
+      // Temporarily allow anyone to create their own profile during bootstrap
+      allow create: if isAuthed() && request.auth.uid == userId;
         
       // Admin can update anyone; a user can update their own non-role fields
       allow update: if isAdmin()
