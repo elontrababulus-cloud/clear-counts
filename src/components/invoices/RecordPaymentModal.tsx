@@ -115,7 +115,7 @@ export function RecordPaymentModal({ open, onOpenChange, invoice }: RecordPaymen
           amount,
           currency: invoice.currency,
           method: values.method as PaymentMethod,
-          reference: values.reference || undefined,
+          reference: values.reference || '', // Firestore does not allow 'undefined'
           date: Timestamp.fromDate(new Date(values.date)),
           recordedBy: user.uid,
         },
