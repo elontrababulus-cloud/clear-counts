@@ -1,0 +1,742 @@
+[debug] [2026-04-21T11:20:34.679Z] ----------------------------------------------------------------------
+[debug] [2026-04-21T11:20:34.704Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\REAL TIME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-04-21T11:20:34.707Z] CLI Version:   15.13.0
+[debug] [2026-04-21T11:20:34.707Z] Platform:      win32
+[debug] [2026-04-21T11:20:34.708Z] Node Version:  v24.14.1
+[debug] [2026-04-21T11:20:34.709Z] Time:          Tue Apr 21 2026 13:20:34 GMT+0200 (Central Africa Time)
+[debug] [2026-04-21T11:20:34.710Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-21T11:20:42.244Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T11:20:42.247Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-04-21T11:20:42.248Z] [iam] checking project clear-counts for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-21T11:20:42.253Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:42.254Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:42.258Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-04-21T11:20:42.258Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-04-21T11:20:42.258Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:20:44.454Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-04-21T11:20:44.455Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:20:44.456Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:44.456Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:44.456Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-04-21T11:20:44.457Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-04-21T11:20:46.548Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-04-21T11:20:46.549Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-04-21T11:20:46.550Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:46.551Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:20:46.552Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts [none]
+[debug] [2026-04-21T11:20:47.229Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts 200
+[debug] [2026-04-21T11:20:47.229Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts {"projectId":"clear-counts","projectNumber":"278147184144","displayName":"clear-counts","name":"projects/clear-counts","resources":{"hostingSite":"clear-counts"},"state":"ACTIVE","etag":"1_f7b24fa2-7585-4259-86ed-2cb54118c135"}
+[debug] [2026-04-21T11:21:00.736Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:00.736Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:00.737Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites pageToken=&pageSize=10
+[debug] [2026-04-21T11:21:03.397Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites 200
+[debug] [2026-04-21T11:21:03.397Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites {"sites":[{"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}]}
+[debug] [2026-04-21T11:21:03.398Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:03.398Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:03.399Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config [none]
+[debug] [2026-04-21T11:21:05.080Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config 200
+[debug] [2026-04-21T11:21:05.081Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config {"projectId":"clear-counts","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","storageBucket":"clear-counts.firebasestorage.app","apiKey":"AIzaSyD_uYREUJf6zUEgApCJEfiN9NkipEX80Q0","authDomain":"clear-counts.firebaseapp.com","messagingSenderId":"278147184144","measurementId":"G-8WSRCMXT19","projectNumber":"278147184144","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-04-21T11:21:29.583Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:29.583Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:21:29.583Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts [none]
+[debug] [2026-04-21T11:21:31.474Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts 200
+[debug] [2026-04-21T11:21:31.474Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts {"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}
+[info] ▲ Next.js 16.2.0 (Turbopack)
+
+[info] - Environments: .env.local
+
+[info] 
+
+[info]   Creating an optimized production build ...
+
+[info] ⨯ ERROR: This build is using Turbopack, with a `webpack` config and no `turbopack` config.
+   This may be a mistake.
+
+   As of Next.js 16 Turbopack is enabled by default and
+   custom webpack configurations may need to be migrated to Turbopack.
+
+   NOTE: your `webpack` config may have been added by a configuration plugin.
+
+   To configure Turbopack, see https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+
+   TIP: Many applications work fine under Turbopack with no configuration,
+   if that is the case for you, you can silence this error by passing the
+   `--turbopack` or `--webpack` flag explicitly or simply setting an 
+   empty turbopack config in your Next config file (e.g. `turbopack: {}`).
+
+[info] 
+
+[info] > Build error occurred
+
+[info] Error: Call retries were exceeded
+    at ignore-listed frames {
+  type: 'WorkerError'
+}
+
+[debug] [2026-04-21T11:21:54.390Z] Error: ENOENT: no such file or directory, open 'C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-04-21T11:22:50.061Z] ----------------------------------------------------------------------
+[debug] [2026-04-21T11:22:50.077Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\REAL TIME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-04-21T11:22:50.078Z] CLI Version:   15.13.0
+[debug] [2026-04-21T11:22:50.078Z] Platform:      win32
+[debug] [2026-04-21T11:22:50.080Z] Node Version:  v24.14.1
+[debug] [2026-04-21T11:22:50.081Z] Time:          Tue Apr 21 2026 13:22:50 GMT+0200 (Central Africa Time)
+[debug] [2026-04-21T11:22:50.081Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-21T11:22:58.270Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T11:22:58.272Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-04-21T11:22:58.272Z] [iam] checking project clear-counts for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-21T11:22:58.277Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:22:58.277Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:22:58.283Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-04-21T11:22:58.284Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-04-21T11:22:58.285Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:23:00.080Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-04-21T11:23:00.081Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:23:00.082Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:00.083Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:00.084Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts [none]
+[debug] [2026-04-21T11:23:00.771Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts 200
+[debug] [2026-04-21T11:23:00.772Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts {"projectId":"clear-counts","projectNumber":"278147184144","displayName":"clear-counts","name":"projects/clear-counts","resources":{"hostingSite":"clear-counts"},"state":"ACTIVE","etag":"1_f7b24fa2-7585-4259-86ed-2cb54118c135"}
+[debug] [2026-04-21T11:23:18.232Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:18.233Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:18.235Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites pageToken=&pageSize=10
+[debug] [2026-04-21T11:23:20.384Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites 200
+[debug] [2026-04-21T11:23:20.384Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites {"sites":[{"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}]}
+[debug] [2026-04-21T11:23:20.387Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:20.387Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:20.388Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config [none]
+[debug] [2026-04-21T11:23:22.147Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config 200
+[debug] [2026-04-21T11:23:22.148Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config {"projectId":"clear-counts","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","storageBucket":"clear-counts.firebasestorage.app","apiKey":"AIzaSyD_uYREUJf6zUEgApCJEfiN9NkipEX80Q0","authDomain":"clear-counts.firebaseapp.com","messagingSenderId":"278147184144","measurementId":"G-8WSRCMXT19","projectNumber":"278147184144","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-04-21T11:23:54.660Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:54.661Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:23:54.661Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts [none]
+[debug] [2026-04-21T11:23:56.654Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts 200
+[debug] [2026-04-21T11:23:56.654Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts {"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}
+[info] ⚠ Invalid next.config.ts options detected: 
+
+[info] ⚠     Unrecognized key(s) in object: 'turbo' at "experimental"
+⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+
+[info] ▲ Next.js 16.2.0 (Turbopack)
+
+[info] - Environments: .env.local
+
+[info] - Experiments (use with caution):
+
+[info]   ? turbo (invalid experimental key)
+
+[info] 
+
+[info]   Creating an optimized production build ...
+
+[info] ⨯ ERROR: This build is using Turbopack, with a `webpack` config and no `turbopack` config.
+   This may be a mistake.
+
+   As of Next.js 16 Turbopack is enabled by default and
+   custom webpack configurations may need to be migrated to Turbopack.
+
+   NOTE: your `webpack` config may have been added by a configuration plugin.
+
+   To configure Turbopack, see https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+
+   TIP: Many applications work fine under Turbopack with no configuration,
+   if that is the case for you, you can silence this error by passing the
+   `--turbopack` or `--webpack` flag explicitly or simply setting an 
+   empty turbopack config in your Next config file (e.g. `turbopack: {}`).
+
+[info] 
+
+[info] > Build error occurred
+
+[info] Error: Call retries were exceeded
+    at ignore-listed frames {
+  type: 'WorkerError'
+}
+
+[debug] [2026-04-21T11:24:20.610Z] Error: ENOENT: no such file or directory, open 'C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-04-21T11:24:43.720Z] ----------------------------------------------------------------------
+[debug] [2026-04-21T11:24:43.726Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\REAL TIME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-04-21T11:24:43.728Z] CLI Version:   15.13.0
+[debug] [2026-04-21T11:24:43.728Z] Platform:      win32
+[debug] [2026-04-21T11:24:43.728Z] Node Version:  v24.14.1
+[debug] [2026-04-21T11:24:43.729Z] Time:          Tue Apr 21 2026 13:24:43 GMT+0200 (Central Africa Time)
+[debug] [2026-04-21T11:24:43.729Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-21T11:24:49.471Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T11:24:49.472Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-04-21T11:24:49.473Z] [iam] checking project clear-counts for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-21T11:24:49.476Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:24:49.476Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:24:49.480Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-04-21T11:24:49.480Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-04-21T11:24:49.480Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:24:51.208Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-04-21T11:24:51.208Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:24:51.210Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:24:51.210Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:24:51.211Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts [none]
+[debug] [2026-04-21T11:24:51.830Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts 200
+[debug] [2026-04-21T11:24:51.830Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts {"projectId":"clear-counts","projectNumber":"278147184144","displayName":"clear-counts","name":"projects/clear-counts","resources":{"hostingSite":"clear-counts"},"state":"ACTIVE","etag":"1_f7b24fa2-7585-4259-86ed-2cb54118c135"}
+[debug] [2026-04-21T11:25:03.833Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:03.833Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:03.835Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites pageToken=&pageSize=10
+[debug] [2026-04-21T11:25:05.907Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites 200
+[debug] [2026-04-21T11:25:05.907Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites {"sites":[{"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}]}
+[debug] [2026-04-21T11:25:05.909Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:05.909Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:05.909Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config [none]
+[debug] [2026-04-21T11:25:07.567Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config 200
+[debug] [2026-04-21T11:25:07.567Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config {"projectId":"clear-counts","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","storageBucket":"clear-counts.firebasestorage.app","apiKey":"AIzaSyD_uYREUJf6zUEgApCJEfiN9NkipEX80Q0","authDomain":"clear-counts.firebaseapp.com","messagingSenderId":"278147184144","measurementId":"G-8WSRCMXT19","projectNumber":"278147184144","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-04-21T11:25:36.036Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:36.037Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:25:36.038Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts [none]
+[debug] [2026-04-21T11:25:37.960Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts 200
+[debug] [2026-04-21T11:25:37.960Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts {"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}
+[info] ⚠ Invalid next.config.ts options detected: 
+
+[info] ⚠     Unrecognized key(s) in object: 'turbopack' at "experimental"
+
+[info] ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+
+[info] ▲ Next.js 16.2.0 (Turbopack)
+
+[info] - Environments: .env.local
+
+[info] - Experiments (use with caution):
+
+[info]   ? turbopack (invalid experimental key)
+
+[info] 
+
+[info]   Creating an optimized production build ...
+
+[info] ⨯ ERROR: This build is using Turbopack, with a `webpack` config and no `turbopack` config.
+   This may be a mistake.
+
+   As of Next.js 16 Turbopack is enabled by default and
+   custom webpack configurations may need to be migrated to Turbopack.
+
+   NOTE: your `webpack` config may have been added by a configuration plugin.
+
+   To configure Turbopack, see https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+
+   TIP: Many applications work fine under Turbopack with no configuration,
+   if that is the case for you, you can silence this error by passing the
+   `--turbopack` or `--webpack` flag explicitly or simply setting an 
+   empty turbopack config in your Next config file (e.g. `turbopack: {}`).
+
+[info] 
+
+[info] > Build error occurred
+
+[info] Error: Call retries were exceeded
+    at ignore-listed frames {
+  type: 'WorkerError'
+}
+
+[debug] [2026-04-21T11:26:04.558Z] Error: ENOENT: no such file or directory, open 'C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-04-21T11:26:42.847Z] ----------------------------------------------------------------------
+[debug] [2026-04-21T11:26:42.871Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\REAL TIME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-04-21T11:26:42.873Z] CLI Version:   15.13.0
+[debug] [2026-04-21T11:26:42.874Z] Platform:      win32
+[debug] [2026-04-21T11:26:42.874Z] Node Version:  v24.14.1
+[debug] [2026-04-21T11:26:42.874Z] Time:          Tue Apr 21 2026 13:26:42 GMT+0200 (Central Africa Time)
+[debug] [2026-04-21T11:26:42.875Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-21T11:26:50.152Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-21T11:26:50.153Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-04-21T11:26:50.153Z] [iam] checking project clear-counts for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-21T11:26:50.157Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:26:50.158Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:26:50.161Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-04-21T11:26:50.162Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-04-21T11:26:50.162Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:26:52.359Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-04-21T11:26:52.359Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-21T11:26:52.361Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:26:52.361Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:26:52.361Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts [none]
+[debug] [2026-04-21T11:26:52.966Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts 200
+[debug] [2026-04-21T11:26:52.967Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts {"projectId":"clear-counts","projectNumber":"278147184144","displayName":"clear-counts","name":"projects/clear-counts","resources":{"hostingSite":"clear-counts"},"state":"ACTIVE","etag":"1_f7b24fa2-7585-4259-86ed-2cb54118c135"}
+[debug] [2026-04-21T11:27:09.557Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:09.558Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:09.559Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites pageToken=&pageSize=10
+[debug] [2026-04-21T11:27:12.094Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites 200
+[debug] [2026-04-21T11:27:12.094Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites {"sites":[{"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}]}
+[debug] [2026-04-21T11:27:12.095Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:12.096Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:12.096Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config [none]
+[debug] [2026-04-21T11:27:13.668Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config 200
+[debug] [2026-04-21T11:27:13.668Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278147184144:web:9220b2b2be68e92d7c7c95/config {"projectId":"clear-counts","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","storageBucket":"clear-counts.firebasestorage.app","apiKey":"AIzaSyD_uYREUJf6zUEgApCJEfiN9NkipEX80Q0","authDomain":"clear-counts.firebaseapp.com","messagingSenderId":"278147184144","measurementId":"G-8WSRCMXT19","projectNumber":"278147184144","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2026-04-21T11:27:51.690Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:51.691Z] Checked if tokens are valid: true, expires at: 1776772790648
+[debug] [2026-04-21T11:27:51.692Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts [none]
+[debug] [2026-04-21T11:27:53.462Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts 200
+[debug] [2026-04-21T11:27:53.462Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/clear-counts/sites/clear-counts {"name":"projects/clear-counts/sites/clear-counts","defaultUrl":"https://clear-counts.web.app","appId":"1:278147184144:web:9220b2b2be68e92d7c7c95","type":"DEFAULT_SITE"}
+[info] ▲ Next.js 16.2.0 (Turbopack)
+
+[info] - Environments: .env.local
+
+[info] 
+
+[info]   Creating an optimized production build ...
+
+[info] 
+
+[info] > Build error occurred
+
+[info] Error: Turbopack build failed with 1 errors:
+./src/app/(dashboard)/dashboard/page.tsx:373:3
+Return statement is not allowed here
+  371 |   // ── Render ─────────────────────────────────────────────────────────────────
+  372 |
+> 373 |   return (
+      |   ^^^^^^^
+> 374 |     <div className="space-y-6">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 375 |       {/* Heading */}
+      | ^^^^^^^^^^^^^^^^^^^^^
+> 376 |       <div>
+      | ^^^^^^^^^^^
+> 377 |         <h2 className="text-xl font-semibold text-gray-900">Dashboard</h2>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 378 |         <p className="text-sm text-gray-500 mt-0.5">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 379 |           {format(new Date(), "EEEE, MMMM d yyyy")} · Here's your business at a glance.
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 380 |         </p>
+      | ^^^^^^^^^^^^
+> 381 |       </div>
+      | ^^^^^^^^^^^^
+> 382 |
+      | ^
+> 383 |       {/* Stat cards */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 384 |       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 385 |         <StatCard
+      | ^^^^^^^^^^^^^^^^^
+> 386 |           label="Total Clients"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 387 |           value={String(totalClients)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 388 |           change={clientsPct != null ? `${clientsPct >= 0 ? '+' : ''}${clientsPct}% vs la...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 389 |           changePct={clientsPct}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 390 |           sparkline={clientsSparkline}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 391 |           icon={Users}
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 392 |           iconBg="bg-blue-50"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 393 |           iconColor="text-blue-600"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 394 |           loading={loading}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 395 |         />
+      | ^^^^^^^^^^
+> 396 |         <StatCard
+      | ^^^^^^^^^^^^^^^^^
+> 397 |           label="Revenue This Month"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 398 |           value={fmt(revenueThisMonth)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 399 |           change={revenuePct != null ? `${revenuePct >= 0 ? '+' : ''}${revenuePct}% vs la...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 400 |           changePct={revenuePct}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 401 |           sparkline={revenueSparkline}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 402 |           icon={DollarSign}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 403 |           iconBg="bg-green-50"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 404 |           iconColor="text-green-600"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 405 |           loading={loading}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 406 |         />
+      | ^^^^^^^^^^
+> 407 |         <StatCard
+      | ^^^^^^^^^^^^^^^^^
+> 408 |           label="Outstanding"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 409 |           value={fmt(outstanding)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 410 |           change={`${outstandingCount} unpaid invoice${outstandingCount !== 1 ? 's' : ''}`}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 411 |           changePct={null}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 412 |           sparkline={outstandingSparkline}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 413 |           icon={AlertCircle}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 414 |           iconBg="bg-amber-50"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 415 |           iconColor="text-amber-600"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 416 |           loading={loading}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 417 |         />
+      | ^^^^^^^^^^
+> 418 |         <StatCard
+      | ^^^^^^^^^^^^^^^^^
+> 419 |           label="Active Projects"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 420 |           value={String(activeProjects)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 421 |           change={`${projects.filter((p) => p.status === 'completed').length} completed t...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 422 |           changePct={null}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 423 |           sparkline={projectsSparkline}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 424 |           icon={Briefcase}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 425 |           iconBg="bg-purple-50"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 426 |           iconColor="text-purple-600"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 427 |           loading={loading}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 428 |         />
+      | ^^^^^^^^^^
+> 429 |       </div>
+      | ^^^^^^^^^^^^
+> 430 |
+      | ^
+> 431 |       {/* Two-column body */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 432 |       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 433 |
+      | ^
+> 434 |         {/* Recent Invoices — left 2/3 */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 435 |         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-100 shadow-s...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 436 |           <div className="flex items-center justify-between px-5 py-4 border-b border-gra...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 437 |             <h3 className="text-sm font-semibold text-gray-900">Recent Invoices</h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 438 |             <Link href="/invoices" className="text-xs text-blue-600 hover:underline">View...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 439 |           </div>
+      | ^^^^^^^^^^^^^^^^
+> 440 |           {loading ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 441 |             <div className="p-5 space-y-3">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 442 |               {[1, 2, 3].map((i) => <Skeleton key={i} className="h-10 w-full" />)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 443 |             </div>
+      | ^^^^^^^^^^^^^^^^^^
+> 444 |           ) : recentInvoices.length === 0 ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 445 |             <div className="flex flex-col items-center gap-2 py-12 text-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 446 |               <Receipt size={32} className="text-gray-300" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 447 |               <p className="text-sm text-gray-400">No invoices yet</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 448 |             </div>
+      | ^^^^^^^^^^^^^^^^^^
+> 449 |           ) : (
+      | ^^^^^^^^^^^^^^^
+> 450 |             <table className="w-full text-sm">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 451 |               <thead className="bg-gray-50">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 452 |                 <tr>
+      | ^^^^^^^^^^^^^^^^^^^^
+> 453 |                   <th className="text-left px-5 py-2.5 text-xs font-medium text-gray-500"...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 454 |                   <th className="text-left px-5 py-2.5 text-xs font-medium text-gray-500 ...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 455 |                   <th className="text-left px-5 py-2.5 text-xs font-medium text-gray-500"...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 456 |                   <th className="text-right px-5 py-2.5 text-xs font-medium text-gray-500...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 457 |                 </tr>
+      | ^^^^^^^^^^^^^^^^^^^^^
+> 458 |               </thead>
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 459 |               <tbody className="divide-y divide-gray-50">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 460 |                 {recentInvoices.map((inv) => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 461 |                   const status = effectiveStatus(inv);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 462 |                   return (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 463 |                     <tr key={inv.id} className="hover:bg-gray-50 transition-colors">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 464 |                       <td className="px-5 py-3">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 465 |                         <Link href={`/invoices/${inv.id}`} className="font-medium text-bl...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 466 |                           {inv.invoiceNumber}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 467 |                         </Link>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 468 |                         <p className="text-[10px] text-gray-400">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 469 |                           {inv.issueDate ? format(new Date(inv.issueDate.seconds * 1000),...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 470 |                         </p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 471 |                       </td>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 472 |                       <td className="px-5 py-3 text-gray-600 hidden sm:table-cell">{inv.c...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 473 |                       <td className="px-5 py-3">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 474 |                         <span className={cn('inline-flex px-2 py-0.5 rounded text-[10px] ...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 475 |                           {status}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 476 |                         </span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 477 |                       </td>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 478 |                       <td className="px-5 py-3 text-right font-mono text-gray-900 font-me...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 479 |                         {fmt(inv.total)}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 480 |                       </td>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 481 |                     </tr>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 482 |                   );
+      | ^^^^^^^^^^^^^^^^^^^^
+> 483 |                 })}
+      | ^^^^^^^^^^^^^^^^^^^
+> 484 |               </tbody>
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 485 |             </table>
+      | ^^^^^^^^^^^^^^^^^^^^
+> 486 |           )}
+      | ^^^^^^^^^^^^
+> 487 |         </div>
+      | ^^^^^^^^^^^^^^
+> 488 |
+      | ^
+> 489 |         {/* Right column */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 490 |         <div className="flex flex-col gap-4">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 491 |
+      | ^
+> 492 |           {/* Lead Pipeline mini-chart */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 493 |           <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 space-...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |             <div className="flex items-center justify-between">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |               <h3 className="text-sm font-semibold text-gray-900">Lead Pipeline</h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 496 |               <Link href="/leads" className="text-xs text-blue-600 hover:underline">View ...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 497 |             </div>
+      | ^^^^^^^^^^^^^^^^^^
+> 498 |             {loading ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 499 |               <div className="space-y-2">{[1, 2, 3, 4].map((i) => <Skeleton key={i} class...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 500 |             ) : leads.length === 0 ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 501 |               <div className="text-center py-4">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 502 |                 <p className="text-sm text-gray-400">No leads yet</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 503 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^
+> 504 |             ) : (
+      | ^^^^^^^^^^^^^^^^^
+> 505 |               <div className="space-y-2.5">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 506 |                 {pipelineByStage.filter((s) => s.count > 0).map(({ stage, count, value })...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 507 |                   <div key={stage} className="space-y-1">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 508 |                     <div className="flex items-center justify-between text-xs">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 509 |                       <span className="font-medium text-gray-700">{STAGE_LABELS[stage]}</...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 510 |                       <span className="text-gray-500">{count} · {fmt(value)}</span>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 511 |                     </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 512 |                     <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 513 |                       <div
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 514 |                         className="h-full rounded-full transition-all duration-500"
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 515 |                         style={{
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 516 |                           width: `${Math.round((value / maxPipelineValue) * 100)}%`,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 517 |                           backgroundColor: STAGE_COLORS[stage],
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 518 |                         }}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 519 |                       />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 520 |                     </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 521 |                   </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 522 |                 ))}
+      | ^^^^^^^^^^^^^^^^^^^
+> 523 |               </div>
+      | ^^^^^^^^^^^^^^^^^^^^
+> 524 |             )}
+      | ^^^^^^^^^^^^^^
+> 525 |           </div>
+      | ^^^^^^^^^^^^^^^^
+> 526 |
+      | ^
+> 527 |           {/* Activity feed */}
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 528 |           <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 space-...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 529 |             <h3 className="text-sm font-semibold text-gray-900">Recent Activity</h3>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 530 |             {loading ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 531 |               <div className="space-y-3">{[1, 2, 3].map((i) => <Skeleton key={i} classNam...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 532 |             ) : activity.length === 0 ? (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 533 |               <p className="text-sm text-gray-400 text-center py-6">No recent activity</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 534 |             ) : (
+      | ^^^^^^^^^^^^^^^^^
+> 535 |               <ul className="space-y-3">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 536 |                 {activity.map((item) => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 537 |                   const Icon = item.icon;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 538 |                   const ago = item.time
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 539 |                     ? (() => {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 540 |                         const diffMs = Date.now() - item.time;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 541 |                         const mins = Math.floor(diffMs / 60000);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 542 |                         if (mins < 60) return `${mins}m ago`;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 543 |                         const hrs = Math.floor(mins / 60);
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 544 |                         if (hrs < 24) return `${hrs}h ago`;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 545 |                         return `${Math.floor(hrs / 24)}d ago`;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 546 |                       })()
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 547 |                     : '';
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 548 |                   return (
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 549 |                     <li key={item.id} className="flex items-start gap-3">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 550 |                       <div className={cn('w-7 h-7 rounded-full flex items-center justify-...
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 551 |                         <Icon size={13} className={item.iconColor} />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 552 |                       </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 553 |                       <div className="flex-1 min-w-0">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 554 |                         <p className="text-xs text-gray-700 leading-snug">{item.text}</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 555 |                         <p className="text-[10px] text-gray-400 mt-0.5">{ago}</p>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 556 |                       </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 557 |                     </li>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 558 |                   );
+      | ^^^^^^^^^^^^^^^^^^^^
+> 559 |                 })}
+      | ^^^^^^^^^^^^^^^^^^^
+> 560 |               </ul>
+      | ^^^^^^^^^^^^^^^^^^^
+> 561 |             )}
+      | ^^^^^^^^^^^^^^
+> 562 |           </div>
+      | ^^^^^^^^^^^^^^^^
+> 563 |         </div>
+      | ^^^^^^^^^^^^^^
+> 564 |       </div>
+      | ^^^^^^^^^^^^
+> 565 |     </div>
+      | ^^^^^^^^^^
+> 566 |   );
+      | ^^^^
+  567 | }
+  568 |
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (./src/app/(dashboard)/dashboard/page.tsx:373:3)
+
+[debug] [2026-04-21T11:28:50.620Z] Error: ENOENT: no such file or directory, open 'C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\.next\server\middleware-manifest.json'
+[error] 
+[error] Error: An unexpected error has occurred.

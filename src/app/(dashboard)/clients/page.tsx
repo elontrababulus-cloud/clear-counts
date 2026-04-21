@@ -55,7 +55,7 @@ async function fetchBalances(clientIds: string[]): Promise<Record<string, number
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ClientsPage() {
-  const { role } = useAuth();
+  const { user, role, loading: authLoading } = useAuth();
 
   // ── Data state ──────────────────────────────────────────────────────────────
   const [clients, setClients] = useState<ClientDoc[]>([]);
@@ -74,6 +74,8 @@ export default function ClientsPage() {
 
   // ── Real-time subscription ──────────────────────────────────────────────────
   useEffect(() => {
+    if (authLoading || !user || !role) return;
+
     const unsub = subscribeToCollection<ClientDoc>(
       'clients',
       [
@@ -86,7 +88,7 @@ export default function ClientsPage() {
       },
     );
     return unsub;
-  }, []);
+  }, [user, role, authLoading]);
 
   // ── Fetch outstanding balances whenever client list changes ─────────────────
   useEffect(() => {

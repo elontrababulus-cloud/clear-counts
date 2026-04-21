@@ -9,8 +9,18 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+  query,
+  limit,
+  serverTimestamp,
+} from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
+import type { Timestamp } from 'firebase/firestore';
 
 export type Role = 'admin' | 'staff' | 'client';
 
@@ -20,6 +30,7 @@ export interface UserDoc {
   displayName?: string;
   role: Role;
   photoURL?: string;
+  createdAt?: Timestamp;
   [key: string]: unknown;
 }
 
@@ -52,12 +63,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setUserDoc(data);
             setRole(data.role ?? 'staff');
           } else {
-            setUserDoc(null);
-            setRole('staff');
+            // Check if this is the first user in the system
+            const usersQuery = query(collection(db, 'users'), limit(1));
+            const usersSnap = await getDocs(usersQuery);
+            const isFirstUser = usersSnap.empty;
+            const newRole: Role = isFirstUser ? 'admin' : 'staff';
+
+            const newUserData: UserDoc = {
+              uid: firebaseUser.uid,
+              email: firebaseUser.email ?? '',
+              displayName: firebaseUser.displayName ?? '',
+              role: newRole,
+              photoURL: firebaseUser.photoURL ?? undefined,
+              createdAt: serverTimestamp() as unknown as Timestamp,
+            };
+
+            await setDoc(doc(db, 'users', firebaseUser.uid), newUserData);
+            setUserDoc(newUserData);
+            setRole(newRole);
           }
-        } catch {
+        } catch (err) {
+          console.error('Error fetching/creating user doc:', err);
           setUserDoc(null);
-          setRole('staff');
+          setRole(null);
         }
       } else {
         setUser(null);

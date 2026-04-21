@@ -1,0 +1,316 @@
+[debug] [2026-03-21T15:24:06.011Z] ----------------------------------------------------------------------
+[debug] [2026-03-21T15:24:06.014Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\REAL TIME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --force
+[debug] [2026-03-21T15:24:06.015Z] CLI Version:   15.9.1
+[debug] [2026-03-21T15:24:06.015Z] Platform:      win32
+[debug] [2026-03-21T15:24:06.015Z] Node Version:  v20.19.5
+[debug] [2026-03-21T15:24:06.015Z] Time:          Sat Mar 21 2026 17:24:06 GMT+0200 (Central Africa Time)
+[debug] [2026-03-21T15:24:06.016Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-21T15:24:07.965Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-21T15:24:07.965Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-03-21T15:24:07.965Z] [iam] checking project clear-counts for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-03-21T15:24:07.967Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:07.967Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:07.968Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-03-21T15:24:07.968Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-03-21T15:24:07.968Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-03-21T15:24:09.685Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-03-21T15:24:09.686Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-03-21T15:24:09.687Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:09.687Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:09.687Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-03-21T15:24:09.687Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-03-21T15:24:11.330Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-03-21T15:24:11.331Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/clear-counts/serviceAccounts/clear-counts@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'clear-counts'...
+[info] 
+[info] i  deploying functions 
+[debug] [2026-03-21T15:24:11.336Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:11.336Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:11.337Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts [none]
+[debug] [2026-03-21T15:24:11.655Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts 200
+[debug] [2026-03-21T15:24:11.655Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts {"projectNumber":"278147184144","projectId":"clear-counts","lifecycleState":"ACTIVE","name":"clear-counts","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-03-21T14:15:13.643Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-03-21T15:24:11.659Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:11.659Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:11.659Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts/adminSdkConfig [none]
+[debug] [2026-03-21T15:24:13.176Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts/adminSdkConfig 200
+[debug] [2026-03-21T15:24:13.176Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clear-counts/adminSdkConfig {"projectId":"clear-counts","storageBucket":"clear-counts.firebasestorage.app"}
+[debug] [2026-03-21T15:24:13.176Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:13.176Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:13.176Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clear-counts/configs [none]
+[debug] [2026-03-21T15:24:13.752Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clear-counts/configs 200
+[debug] [2026-03-21T15:24:13.752Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/clear-counts/configs {}
+[debug] [2026-03-21T15:24:13.756Z] Validating nodejs source
+[warn] !  functions: Runtime Node.js 20 will be deprecated on 2026-04-30 and will be decommissioned on 2026-10-30, after which you will not be able to deploy without upgrading. Consider upgrading now to avoid disruption. See https://cloud.google.com/functions/docs/runtime-support for full details on the lifecycle policy 
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2026-03-21T15:24:14.799Z] > [functions] package.json contents: {
+  "name": "clearcounts-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClearCounts CRM — Firebase Cloud Functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions",
+    "lint": "eslint --ext .ts src/"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}
+[debug] [2026-03-21T15:24:14.800Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2026-03-21T15:24:14.801Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-03-21T15:24:14.816Z] Found firebase-functions binary at 'C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8117
+
+[debug] [2026-03-21T15:24:15.246Z] Got response from /__/functions.yaml {"endpoints":{"checkOverdue":{"availableMemoryMb":256,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","region":["us-central1"],"labels":{},"scheduleTrigger":{"schedule":"0 6 * * *","retryConfig":{},"timeZone":"Africa/Harare"},"entryPoint":"checkOverdue"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2026-03-21T15:24:19.287Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-21T15:24:19.287Z] > authorizing via signed-in user (paulinexu6@gmail.com)
+[debug] [2026-03-21T15:24:19.287Z] [iam] checking project clear-counts for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2026-03-21T15:24:19.287Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:19.287Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:19.287Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions [none]
+[debug] [2026-03-21T15:24:19.287Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions  x-goog-user-project=clear-counts
+[debug] [2026-03-21T15:24:19.288Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-03-21T15:24:20.900Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions 200
+[debug] [2026-03-21T15:24:20.900Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-03-21T15:24:20.900Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:20.900Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:20.901Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/clear-counts/instances pageSize=100&pageToken=
+[debug] [2026-03-21T15:24:22.677Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/clear-counts/instances 200
+[debug] [2026-03-21T15:24:22.677Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/clear-counts/instances {}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\REAL TIME\Documents\ClearCounts\clearcounts-crm\functions (34.6 KB) for uploading 
+[debug] [2026-03-21T15:24:22.729Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:22.729Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:22.729Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/clear-counts/locations/-/functions [none]
+[debug] [2026-03-21T15:24:23.685Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/clear-counts/locations/-/functions 200
+[debug] [2026-03-21T15:24:23.685Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/clear-counts/locations/-/functions {}
+[debug] [2026-03-21T15:24:23.686Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:23.686Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:23.686Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2026-03-21T15:24:24.950Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/-/functions 200
+[debug] [2026-03-21T15:24:24.951Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/-/functions {"functions":[{"name":"projects/clear-counts/locations/africa-south1/functions/checkOverdue","buildConfig":{"build":"projects/278147184144/locations/africa-south1/builds/4d72cbd8-9dd9-4109-b7a3-740fa6a7b1bf","runtime":"nodejs20","entryPoint":"checkOverdue","source":{"storageSource":{"bucket":"gcf-v2-sources-278147184144-africa-south1","object":"checkOverdue/function-source.zip","generation":"1774106241245539"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clear-counts/locations/africa-south1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-278147184144-africa-south1","object":"checkOverdue/function-source.zip","generation":"1774106241245539"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clear-counts/serviceAccounts/278147184144-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clear-counts/locations/africa-south1/services/checkoverdue","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"clear-counts\",\"storageBucket\":\"clear-counts.firebasestorage.app\"}","GCLOUD_PROJECT":"clear-counts","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clear-counts/locations/africa-south1/services/checkOverdue","FUNCTION_TARGET":"checkOverdue","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","uri":"https://checkoverdue-64arxpnp3q-bq.a.run.app","serviceAccountEmail":"278147184144-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"checkoverdue-00001-fil","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2026-03-21T15:18:39.025292755Z","labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"0e67194e682d40e509dd55f222d20e02eb7e3910"},"environment":"GEN_2","url":"https://africa-south1-clear-counts.cloudfunctions.net/checkOverdue","satisfiesPzs":true,"createTime":"2026-03-21T15:17:22.668241082Z","satisfiesPzi":true},{"name":"projects/clear-counts/locations/europe-west4/functions/checkOverdue","buildConfig":{"build":"projects/278147184144/locations/europe-west4/builds/afc48ca5-c221-4817-a466-e3f85a8656dc","runtime":"nodejs20","entryPoint":"checkOverdue","source":{"storageSource":{"bucket":"gcf-v2-sources-278147184144-europe-west4","object":"checkOverdue/function-source.zip","generation":"1774106426997778"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clear-counts/locations/europe-west4/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-278147184144-europe-west4","object":"checkOverdue/function-source.zip","generation":"1774106426997778"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clear-counts/serviceAccounts/278147184144-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clear-counts/locations/europe-west4/services/checkoverdue","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"clear-counts\",\"storageBucket\":\"clear-counts.firebasestorage.app\"}","GCLOUD_PROJECT":"clear-counts","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clear-counts/locations/europe-west4/services/checkOverdue","FUNCTION_TARGET":"checkOverdue","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","uri":"https://checkoverdue-64arxpnp3q-ez.a.run.app","serviceAccountEmail":"278147184144-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"checkoverdue-00001-nor","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2026-03-21T15:21:22.262450549Z","labels":{"firebase-functions-hash":"a23543e0314bc5e4ae77ed6f5d2263eca0618086","deployment-tool":"cli-firebase","deployment-scheduled":"true"},"environment":"GEN_2","url":"https://europe-west4-clear-counts.cloudfunctions.net/checkOverdue","createTime":"2026-03-21T15:20:28.114437114Z","satisfiesPzi":true},{"name":"projects/clear-counts/locations/us-central1/functions/checkOverdue","buildConfig":{"build":"projects/278147184144/locations/us-central1/builds/b78c183f-2ff0-4b3e-a991-a23aeb22e724","runtime":"nodejs20","entryPoint":"checkOverdue","source":{"storageSource":{"bucket":"gcf-v2-sources-278147184144-us-central1","object":"checkOverdue/function-source.zip","generation":"1774106555732242"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/clear-counts/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-278147184144-us-central1","object":"checkOverdue/function-source.zip","generation":"1774106555732242"}},"dockerRegistry":"ARTIFACT_REGISTRY","serviceAccount":"projects/clear-counts/serviceAccounts/278147184144-compute@developer.gserviceaccount.com","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/clear-counts/locations/us-central1/services/checkoverdue","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"clear-counts\",\"storageBucket\":\"clear-counts.firebasestorage.app\"}","GCLOUD_PROJECT":"clear-counts","EVENTARC_CLOUD_EVENT_SOURCE":"projects/clear-counts/locations/us-central1/services/checkOverdue","FUNCTION_TARGET":"checkOverdue","LOG_EXECUTION_ID":"true"},"ingressSettings":"ALLOW_ALL","uri":"https://checkoverdue-64arxpnp3q-uc.a.run.app","serviceAccountEmail":"278147184144-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"checkoverdue-00001-naf","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2026-03-21T15:24:04.788346505Z","labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"d7e6d749384f9c0d1fccea11f4c82239a60f572f"},"environment":"GEN_2","url":"https://us-central1-clear-counts.cloudfunctions.net/checkOverdue","createTime":"2026-03-21T15:22:36.647289814Z","satisfiesPzi":true}]}
+[info] i  functions: ensuring required API cloudscheduler.googleapis.com is enabled... 
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2026-03-21T15:24:24.958Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:24.958Z] Checked if tokens are valid: true, expires at: 1774109643577
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2026-03-21T15:24:24.958Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:24.958Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:24.958Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2026-03-21T15:24:24.958Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/pubsub.googleapis.com:generateServiceIdentity  x-goog-user-project=278147184144
+[debug] [2026-03-21T15:24:24.958Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/pubsub.googleapis.com:generateServiceIdentity {}
+[debug] [2026-03-21T15:24:24.960Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2026-03-21T15:24:24.960Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/eventarc.googleapis.com:generateServiceIdentity  x-goog-user-project=278147184144
+[debug] [2026-03-21T15:24:24.960Z] >>> [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/eventarc.googleapis.com:generateServiceIdentity {}
+[debug] [2026-03-21T15:24:26.755Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2026-03-21T15:24:26.755Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-278147184144@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"102592439918667745588"}}
+[debug] [2026-03-21T15:24:26.802Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2026-03-21T15:24:26.802Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/278147184144/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-278147184144@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"100579847225237716474"}}
+[debug] [2026-03-21T15:24:26.806Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:26.806Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:26.806Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts [none]
+[debug] [2026-03-21T15:24:28.472Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts 200
+[debug] [2026-03-21T15:24:28.472Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/clear-counts {"projectNumber":"278147184144","projectId":"clear-counts","lifecycleState":"ACTIVE","name":"clear-counts","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-03-21T14:15:13.643Z"}
+[debug] [2026-03-21T15:24:28.473Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:28.473Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:28.473Z] >>> [apiv2][query] GET https://compute.googleapis.com/compute/v1/projects/278147184144 [none]
+[debug] [2026-03-21T15:24:29.007Z] <<< [apiv2][status] GET https://compute.googleapis.com/compute/v1/projects/278147184144 403
+[debug] [2026-03-21T15:24:29.007Z] <<< [apiv2][body] GET https://compute.googleapis.com/compute/v1/projects/278147184144 {"error":{"code":403,"message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144","serviceTitle":"Compute Engine API","consumer":"projects/278147184144","service":"compute.googleapis.com","containerInfo":"278147184144"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144"}]}]}}
+[debug] [2026-03-21T15:24:29.008Z] unable to look up default compute service account. Falling back to 278147184144-compute@developer.gserviceaccount.com. Error: {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","errors":[{"message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","domain":"usageLimits","reason":"accessNotConfigured","extendedHelp":"https://console.developers.google.com"}],"status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"SERVICE_DISABLED","domain":"googleapis.com","metadata":{"activationUrl":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144","serviceTitle":"Compute Engine API","consumer":"projects/278147184144","service":"compute.googleapis.com","containerInfo":"278147184144"}},{"@type":"type.googleapis.com/google.rpc.LocalizedMessage","locale":"en-US","message":"Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console API activation","url":"https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144"}]}]}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://compute.googleapis.com/compute/v1/projects/278147184144 had HTTP Error: 403, Compute Engine API has not been used in project 278147184144 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=278147184144 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.","status":403}
+[debug] [2026-03-21T15:24:29.011Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:29.012Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:29.012Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/clear-counts/billingInfo [none]
+[debug] [2026-03-21T15:24:29.569Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/clear-counts/billingInfo 200
+[debug] [2026-03-21T15:24:29.569Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/clear-counts/billingInfo {"name":"projects/clear-counts/billingInfo","projectId":"clear-counts","billingAccountName":"billingAccounts/01D2B0-5E3739-CC19F1","billingEnabled":true}
+[debug] [2026-03-21T15:24:29.574Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:29.574Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:29.575Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2026-03-21T15:24:30.556Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2026-03-21T15:24:30.557Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/clear-counts/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com/e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip?GoogleAccessId=service-278147184144@gcf-admin-robot.iam.gserviceaccount.com&Expires=1774108470&Signature=F99dy82QiCNhPn4pS1%2FZkAx2yuysYUZyaV8t4JiBTTzOUejXVJKAf4uyQscNRrEesNPjXUWzJciUz4Ap%2BAh8oB6PeF5GwzO%2FsWmTwVARAOoennv38Swmuc0R0ydJtqE4jVy1oiwmbIvZQ%2FUca6nC7%2FkRFIN3pSQLy%2FfAKINL2Pq4pMgYngw0%2BjTLaI3W2%2FqKkvNzEnzJICgvLggjjZmBgrWEAFymzmnmZS4h3InexqDNXuSBm%2FF6yu425HI%2BbLi1N%2BN2P%2FFpcjYS2MIaj5GnCb3sqIbl1bqjwymGoV813TaRCmPY%2B76MV5p9OUsBWP6QEcon8hTCKAS%2BG26Ta4dteg%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com","object":"e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip"}}
+[debug] [2026-03-21T15:24:30.560Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com/e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip GoogleAccessId=service-278147184144%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1774108470&Signature=F99dy82QiCNhPn4pS1%2FZkAx2yuysYUZyaV8t4JiBTTzOUejXVJKAf4uyQscNRrEesNPjXUWzJciUz4Ap%2BAh8oB6PeF5GwzO%2FsWmTwVARAOoennv38Swmuc0R0ydJtqE4jVy1oiwmbIvZQ%2FUca6nC7%2FkRFIN3pSQLy%2FfAKINL2Pq4pMgYngw0%2BjTLaI3W2%2FqKkvNzEnzJICgvLggjjZmBgrWEAFymzmnmZS4h3InexqDNXuSBm%2FF6yu425HI%2BbLi1N%2BN2P%2FFpcjYS2MIaj5GnCb3sqIbl1bqjwymGoV813TaRCmPY%2B76MV5p9OUsBWP6QEcon8hTCKAS%2BG26Ta4dteg%3D%3D
+[debug] [2026-03-21T15:24:30.560Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com/e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip [stream]
+[debug] [2026-03-21T15:24:31.443Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com/e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip 200
+[debug] [2026-03-21T15:24:31.443Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-278147184144.us-central1.cloudfunctions.appspot.com/e6a2ce7a-c7c5-486d-a95f-896f4234787f.zip [omitted]
+[info] +  functions: functions source uploaded successfully 
+[info] i  functions: Skipping the deploy of unchanged functions. 
+[info] +  functions[checkOverdue(us-central1)] Skipped (No changes detected) 
+[info] i  functions: deleting Node.js 20 (2nd Gen) function checkOverdue(africa-south1)... 
+[debug] [2026-03-21T15:24:31.447Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:31.447Z] Checked if tokens are valid: true, expires at: 1774109643577
+[info] i  functions: deleting Node.js 20 (2nd Gen) function checkOverdue(europe-west4)... 
+[debug] [2026-03-21T15:24:31.447Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:31.447Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:31.447Z] >>> [apiv2][query] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/africa-south1/jobs/firebase-schedule-checkOverdue-africa-south1 [none]
+[debug] [2026-03-21T15:24:31.449Z] >>> [apiv2][query] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/europe-west4/jobs/firebase-schedule-checkOverdue-europe-west4 [none]
+[debug] [2026-03-21T15:24:31.895Z] <<< [apiv2][status] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/africa-south1/jobs/firebase-schedule-checkOverdue-africa-south1 400
+[debug] [2026-03-21T15:24:31.895Z] <<< [apiv2][body] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/africa-south1/jobs/firebase-schedule-checkOverdue-africa-south1 {"error":{"code":400,"message":"Location 'africa-south1' is not a valid location. Use ListLocations to list valid locations.","status":"INVALID_ARGUMENT"}}
+[error] Request to https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/africa-south1/jobs/firebase-schedule-checkOverdue-africa-south1 had HTTP Error: 400, Location 'africa-south1' is not a valid location. Use ListLocations to list valid locations.
+[debug] [2026-03-21T15:24:31.953Z] <<< [apiv2][status] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/europe-west4/jobs/firebase-schedule-checkOverdue-europe-west4 400
+[debug] [2026-03-21T15:24:31.953Z] <<< [apiv2][body] DELETE https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/europe-west4/jobs/firebase-schedule-checkOverdue-europe-west4 {"error":{"code":400,"message":"Location 'europe-west4' is not a valid location. Use ListLocations to list valid locations.","status":"INVALID_ARGUMENT"}}
+[error] Request to https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/europe-west4/jobs/firebase-schedule-checkOverdue-europe-west4 had HTTP Error: 400, Location 'europe-west4' is not a valid location. Use ListLocations to list valid locations.
+[debug] [2026-03-21T15:24:31.960Z] Total Function Deployment time: 508
+[debug] [2026-03-21T15:24:31.960Z] 2 Functions Deployed
+[debug] [2026-03-21T15:24:31.960Z] 2 Functions Errored
+[debug] [2026-03-21T15:24:31.960Z] 0 Function Deployments Aborted
+[debug] [2026-03-21T15:24:31.960Z] Average Function Deployment time: 477.5
+[info] 
+[info] Functions deploy had errors with the following functions:
+	checkOverdue(africa-south1)
+	checkOverdue(europe-west4)
+[debug] [2026-03-21T15:24:32.388Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:32.388Z] Checked if tokens are valid: true, expires at: 1774109643577
+[debug] [2026-03-21T15:24:32.388Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/clear-counts/locations/us-central1/repositories/gcf-artifacts [none]
+[debug] [2026-03-21T15:24:33.483Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/clear-counts/locations/us-central1/repositories/gcf-artifacts 200
+[debug] [2026-03-21T15:24:33.484Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/clear-counts/locations/us-central1/repositories/gcf-artifacts {"name":"projects/clear-counts/locations/us-central1/repositories/gcf-artifacts","format":"DOCKER","description":"This repository is created and used by Cloud Functions for storing function docker images.","labels":{"goog-managed-by":"cloudfunctions"},"createTime":"2026-03-21T15:22:44.001624Z","updateTime":"2026-03-21T15:24:26.507043Z","mode":"STANDARD_REPOSITORY","cleanupPolicies":{"firebase-functions-cleanup":{"id":"firebase-functions-cleanup","action":"DELETE","condition":{"tagState":"ANY","olderThan":"86400s"}}},"sizeBytes":"88047690","vulnerabilityScanningConfig":{"lastEnableTime":"2026-03-21T15:22:36.816056489Z","enablementState":"SCANNING_DISABLED","enablementStateReason":"API containerscanning.googleapis.com is not enabled."},"satisfiesPzi":true,"registryUri":"us-central1-docker.pkg.dev/clear-counts/gcf-artifacts"}
+[debug] [2026-03-21T15:24:33.484Z] Functions deploy failed.
+[debug] [2026-03-21T15:24:33.484Z] {
+  "endpoint": {
+    "platform": "gcfv2",
+    "id": "checkOverdue",
+    "project": "clear-counts",
+    "region": "africa-south1",
+    "scheduleTrigger": {},
+    "entryPoint": "checkOverdue",
+    "runtime": "nodejs20",
+    "source": {
+      "storageSource": {
+        "bucket": "gcf-v2-sources-278147184144-africa-south1",
+        "object": "checkOverdue/function-source.zip",
+        "generation": "1774106241245539"
+      }
+    },
+    "ingressSettings": "ALLOW_ALL",
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"clear-counts\",\"storageBucket\":\"clear-counts.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "clear-counts",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/clear-counts/locations/africa-south1/services/checkOverdue",
+      "FUNCTION_TARGET": "checkOverdue",
+      "LOG_EXECUTION_ID": "true"
+    },
+    "timeoutSeconds": 60,
+    "uri": "https://africa-south1-clear-counts.cloudfunctions.net/checkOverdue",
+    "serviceAccount": "278147184144-compute@developer.gserviceaccount.com",
+    "availableMemoryMb": 256,
+    "cpu": 1,
+    "concurrency": 80,
+    "labels": {
+      "deployment-tool": "cli-firebase",
+      "deployment-scheduled": "true",
+      "firebase-functions-hash": "0e67194e682d40e509dd55f222d20e02eb7e3910"
+    },
+    "runServiceId": "checkoverdue",
+    "codebase": "default",
+    "hash": "0e67194e682d40e509dd55f222d20e02eb7e3910",
+    "state": "ACTIVE"
+  },
+  "op": "delete schedule",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "body": {
+        "error": {
+          "code": 400,
+          "message": "Location 'africa-south1' is not a valid location. Use ListLocations to list valid locations.",
+          "status": "INVALID_ARGUMENT"
+        }
+      },
+      "response": {
+        "statusCode": 400
+      }
+    },
+    "exit": 1,
+    "message": "Request to https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/africa-south1/jobs/firebase-schedule-checkOverdue-africa-south1 had HTTP Error: 400, Location 'africa-south1' is not a valid location. Use ListLocations to list valid locations.",
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2026-03-21T15:24:33.485Z] {
+  "endpoint": {
+    "platform": "gcfv2",
+    "id": "checkOverdue",
+    "project": "clear-counts",
+    "region": "europe-west4",
+    "scheduleTrigger": {},
+    "entryPoint": "checkOverdue",
+    "runtime": "nodejs20",
+    "source": {
+      "storageSource": {
+        "bucket": "gcf-v2-sources-278147184144-europe-west4",
+        "object": "checkOverdue/function-source.zip",
+        "generation": "1774106426997778"
+      }
+    },
+    "ingressSettings": "ALLOW_ALL",
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"clear-counts\",\"storageBucket\":\"clear-counts.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "clear-counts",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/clear-counts/locations/europe-west4/services/checkOverdue",
+      "FUNCTION_TARGET": "checkOverdue",
+      "LOG_EXECUTION_ID": "true"
+    },
+    "timeoutSeconds": 60,
+    "uri": "https://europe-west4-clear-counts.cloudfunctions.net/checkOverdue",
+    "serviceAccount": "278147184144-compute@developer.gserviceaccount.com",
+    "availableMemoryMb": 256,
+    "cpu": 1,
+    "concurrency": 80,
+    "labels": {
+      "firebase-functions-hash": "a23543e0314bc5e4ae77ed6f5d2263eca0618086",
+      "deployment-tool": "cli-firebase",
+      "deployment-scheduled": "true"
+    },
+    "runServiceId": "checkoverdue",
+    "codebase": "default",
+    "hash": "a23543e0314bc5e4ae77ed6f5d2263eca0618086",
+    "state": "ACTIVE"
+  },
+  "op": "delete schedule",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "body": {
+        "error": {
+          "code": 400,
+          "message": "Location 'europe-west4' is not a valid location. Use ListLocations to list valid locations.",
+          "status": "INVALID_ARGUMENT"
+        }
+      },
+      "response": {
+        "statusCode": 400
+      }
+    },
+    "exit": 1,
+    "message": "Request to https://cloudscheduler.googleapis.com/v1/projects/clear-counts/locations/europe-west4/jobs/firebase-schedule-checkOverdue-europe-west4 had HTTP Error: 400, Location 'europe-west4' is not a valid location. Use ListLocations to list valid locations.",
+    "status": 400,
+    "code": 400
+  }
+}
+[error] Error: There was an error deploying functions:
+[error] - Error Failed to delete schedule function checkOverdue in region africa-south1
+[error] - Error Failed to delete schedule function checkOverdue in region europe-west4

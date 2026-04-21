@@ -10,7 +10,9 @@ service cloud.firestore {
     }
 
     function userRole() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+        : null;
     }
 
     function isAdmin() {
@@ -45,12 +47,20 @@ service cloud.firestore {
 
     match /users/{userId} {
       allow read: if isAuthed() && (request.auth.uid == userId || isAdmin());
-      allow create: if isAdmin() && validCreatedBy();
+      // Allow self-creation; specific role-assignment logic is handled on first sign-in
+      // via AuthContext, but rules ensure they can't self-promote.
+      allow create: if isAuthed() && request.auth.uid == userId
+        && validCreatedBy()
+        && (
+          !('role' in request.resource.data)
+          || request.resource.data.role == 'staff'
+          || isAdmin()
+        );
       // Admin can update anyone; a user can update their own non-role fields
       allow update: if isAdmin()
         || (isAuthed()
             && request.auth.uid == userId
-            && request.resource.data.role == resource.data.role
+            && (!('role' in request.resource.data) || request.resource.data.role == resource.data.role)
             && validUpdatedBy());
       allow delete: if isAdmin();
     }

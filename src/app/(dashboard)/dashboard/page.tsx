@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { format, startOfMonth, subMonths, isPast } from 'date-fns';
+import { useAuth } from '@/hooks/useAuth';
 import {
   Users,
   DollarSign,
@@ -179,6 +180,7 @@ interface ActivityItem {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
+  const { user, role, loading: authLoading } = useAuth();
   const [clients, setClients] = useState<ClientDoc[]>([]);
   const [invoices, setInvoices] = useState<InvoiceDoc[]>([]);
   const [payments, setPayments] = useState<PaymentDoc[]>([]);
@@ -192,6 +194,9 @@ export default function DashboardPage() {
   const lastMonth = months[5];
 
   useEffect(() => {
+    // Only start subscriptions once the user and their role are fully loaded
+    if (authLoading || !user || !role) return;
+
     // Unsubscribers
     const unsubs: (() => void)[] = [];
 
@@ -246,7 +251,7 @@ export default function DashboardPage() {
     );
 
     return () => unsubs.forEach((u) => u());
-  }, []);
+  }, [user, role, authLoading]);
 
   // ── Stats calculations ─────────────────────────────────────────────────────
 
