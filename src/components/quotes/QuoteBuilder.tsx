@@ -14,6 +14,7 @@ import {
   getAll,
   getNextCounter,
   formatQuoteNumber,
+  subscribeToDoc,
 } from '@/lib/firestore/helpers';
 import { useAuth } from '@/hooks/useAuth';
 import type { QuoteDoc, ClientDoc, LineItem } from '@/types';
@@ -81,14 +82,15 @@ export function QuoteBuilder({ quote, onSaved }: QuoteBuilderProps) {
   const [clientDropdownOpen, setClientDropdownOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<ClientDoc | null>(null);
 
-  useEffect(() => {
-    getAll<ClientDoc>('clients', {
-      constraints: [
-        where('status', 'in', ['active', 'prospect']),
-        orderBy('companyName'),
-      ],
-      pageSize: 200,
     }).then(({ data }) => setClients(data));
+  }, []);
+
+  // ── Settings ──────────────────────────────────────────────────────────────
+
+  const [settings, setSettings] = useState<CompanySettings | null>(null);
+  useEffect(() => {
+    const unsub = subscribeToDoc<CompanySettings>('settings', 'company', setSettings);
+    return unsub;
   }, []);
 
   // ── Quote number ──────────────────────────────────────────────────────────
@@ -103,10 +105,10 @@ export function QuoteBuilder({ quote, onSaved }: QuoteBuilderProps) {
     }
     setLoadingNumber(true);
     getNextCounter('quoteCounter')
-      .then((n) => setQuoteNumber(formatQuoteNumber(n)))
+      .then((n) => setQuoteNumber(formatQuoteNumber(n, settings ?? {})))
       .catch(() => setQuoteNumber('QT-####'))
       .finally(() => setLoadingNumber(false));
-  }, [isEdit, quote]);
+  }, [isEdit, quote, settings]);
 
   // ── Line items ────────────────────────────────────────────────────────────
 

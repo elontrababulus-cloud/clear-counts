@@ -337,17 +337,42 @@ export async function getNextCounter(
 }
 
 /**
- * Format an invoice number from a counter value.
- * @example formatInvoiceNumber(1)  // "INV-0001"
+ * Format an invoice number from a counter value and settings.
+ * @example formatInvoiceNumber(1, settings)  // "INV-0001"
  */
-export function formatInvoiceNumber(n: number): string {
-  return `INV-${String(n).padStart(4, '0')}`;
+export function formatInvoiceNumber(n: number, settings?: Partial<CompanySettings>): string {
+  const prefix = settings?.invoicePrefix ?? 'INV';
+  const padding = settings?.numberPadding ?? 4;
+  return `${prefix}-${String(n).padStart(padding, '0')}`;
 }
 
 /**
- * Format a quote number from a counter value.
- * @example formatQuoteNumber(1)  // "QT-0001"
+ * Format a quote number from a counter value and settings.
+ * @example formatQuoteNumber(1, settings)  // "QT-0001"
  */
-export function formatQuoteNumber(n: number): string {
-  return `QT-${String(n).padStart(4, '0')}`;
+export function formatQuoteNumber(n: number, settings?: Partial<CompanySettings>): string {
+  const prefix = settings?.quotePrefix ?? 'QT';
+  const padding = settings?.numberPadding ?? 4;
+  return `${prefix}-${String(n).padStart(padding, '0')}`;
+}
+
+/**
+ * Format a numeric amount using company preferences.
+ */
+export function formatAmount(
+  amount: number,
+  settings?: Partial<CompanySettings>,
+  currency?: string
+): string {
+  const places = settings?.decimalPlaces ?? 2;
+  const thSep = settings?.thousandSeparator ?? ',';
+  const deSep = settings?.decimalSeparator ?? '.';
+
+  const fixed = amount.toFixed(places);
+  const [int, dec] = fixed.split('.');
+
+  const formattedInt = int.replace(/\B(?=(\d{3})+(?!\d))/g, thSep);
+  const result = dec ? `${formattedInt}${deSep}${dec}` : formattedInt;
+
+  return currency ? `${currency} ${result}` : result;
 }

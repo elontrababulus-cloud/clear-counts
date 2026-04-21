@@ -48,6 +48,7 @@ export interface ClientDoc {
   createdAt: Timestamp;
   updatedAt?: Timestamp;
   deletedAt?: Timestamp;
+  customFields?: Record<string, any>;
 }
 
 // ─── Contacts (sub-collection: clients/{clientId}/contacts) ──────────────────
@@ -92,6 +93,7 @@ export interface LeadDoc {
   createdAt: Timestamp;
   updatedAt?: Timestamp;
   deletedAt?: Timestamp;
+  customFields?: Record<string, any>;
 }
 
 // ─── Lead Activities (sub-collection: leads/{leadId}/activities) ──────────────
@@ -248,6 +250,7 @@ export interface ProjectDoc {
   createdAt: Timestamp;
   updatedAt?: Timestamp;
   deletedAt?: Timestamp;
+  customFields?: Record<string, any>;
 }
 
 // ─── Tasks (sub-collection: projects/{projectId}/tasks) ───────────────────────
@@ -297,6 +300,34 @@ export interface CompanySettings {
   quotePrefix: string;   // e.g. "QT"
   invoiceCounter: number;
   quoteCounter: number;
+  // Enhanced Finance
+  numberPadding?: number; // e.g. 4 for INV-0001
+  thousandSeparator?: string; // e.g. ","
+  decimalSeparator?: string; // e.g. "."
+  decimalPlaces?: number; // e.g. 2
+  // Security/Permissions
+  permissions?: {
+    staffCanSeeAllClients?: boolean;
+    staffCanSeeAllLeads?: boolean;
+    staffCanSeeAllInvoices?: boolean;
+  };
+}
+
+// ─── Custom Fields (definitions: custom_fields/{id}) ─────────────────────────
+
+export type CustomFieldType = 'text' | 'number' | 'date' | 'select' | 'boolean';
+
+export interface CustomFieldDefinition {
+  id: string;
+  entity: 'clients' | 'leads' | 'projects' | 'invoices';
+  label: string;
+  key: string; // generated from label or manual
+  type: CustomFieldType;
+  required: boolean;
+  options?: string[]; // for type === 'select'
+  placeholder?: string;
+  order: number;
+  createdAt: Timestamp;
 }
 
 // ─── Notifications ────────────────────────────────────────────────────────────

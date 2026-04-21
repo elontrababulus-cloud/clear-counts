@@ -15,6 +15,7 @@ import {
   getById,
   getNextCounter,
   formatInvoiceNumber,
+  subscribeToDoc,
 } from '@/lib/firestore/helpers';
 import { useAuth } from '@/hooks/useAuth';
 import type { InvoiceDoc, ClientDoc, LineItem, QuoteDoc } from '@/types';
@@ -82,11 +83,15 @@ export function InvoiceBuilder({ invoice, quoteId, onSaved }: InvoiceBuilderProp
   const [clientDropdownOpen, setClientDropdownOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<ClientDoc | null>(null);
 
-  useEffect(() => {
-    getAll<ClientDoc>('clients', {
-      constraints: [where('status', 'in', ['active', 'prospect']), orderBy('companyName')],
-      pageSize: 200,
     }).then(({ data }) => setClients(data));
+  }, []);
+
+  // ── Settings ──────────────────────────────────────────────────────────────
+
+  const [settings, setSettings] = useState<CompanySettings | null>(null);
+  useEffect(() => {
+    const unsub = subscribeToDoc<CompanySettings>('settings', 'company', setSettings);
+    return unsub;
   }, []);
 
   // ── Invoice number ────────────────────────────────────────────────────────
@@ -101,10 +106,10 @@ export function InvoiceBuilder({ invoice, quoteId, onSaved }: InvoiceBuilderProp
     }
     setLoadingNumber(true);
     getNextCounter('invoiceCounter')
-      .then((n) => setInvoiceNumber(formatInvoiceNumber(n)))
+      .then((n) => setInvoiceNumber(formatInvoiceNumber(n, settings ?? {})))
       .catch(() => setInvoiceNumber('INV-####'))
       .finally(() => setLoadingNumber(false));
-  }, [isEdit, invoice]);
+  }, [isEdit, invoice, settings]);
 
   // ── Line items ────────────────────────────────────────────────────────────
 

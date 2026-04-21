@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -20,6 +20,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { DynamicFieldRenderer } from '../shared/DynamicFieldRenderer';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -66,6 +67,7 @@ interface LeadFormProps {
 export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
   const { user } = useAuth();
   const isEdit = !!lead;
+  const [customFields, setCustomFields] = useState<Record<string, any>>({});
 
   const {
     register,
@@ -106,6 +108,7 @@ export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
         expectedCloseDate: dateStr,
         notes: '',
       });
+      setCustomFields(lead.customFields ?? {});
     } else {
       reset({
         title: '',
@@ -119,6 +122,7 @@ export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
         expectedCloseDate: '',
         notes: '',
       });
+      setCustomFields({});
     }
   }, [lead, reset]);
 
@@ -140,6 +144,7 @@ export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
           source: values.source,
           assignedTo: values.assignedTo,
           expectedCloseDate: closeDate,
+          customFields,
         });
         toast.success('Lead updated');
         onSaved?.(lead.id);
@@ -156,6 +161,7 @@ export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
           expectedCloseDate: closeDate,
           status: 'active',
           createdBy: user.uid,
+          customFields,
         });
         toast.success('Lead created');
         onSaved?.(id);
@@ -245,6 +251,12 @@ export function LeadForm({ open, onOpenChange, lead, onSaved }: LeadFormProps) {
               <p className="text-xs text-destructive">{errors.expectedCloseDate.message}</p>
             )}
           </div>
+
+          <DynamicFieldRenderer
+            entity="leads"
+            values={customFields}
+            onChange={(key, val) => setCustomFields(prev => ({ ...prev, [key]: val }))}
+          />
 
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -19,6 +19,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { DynamicFieldRenderer } from '../shared/DynamicFieldRenderer';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -81,6 +82,7 @@ export interface ClientFormProps {
 export function ClientForm({ open, onOpenChange, client }: ClientFormProps) {
   const { user } = useAuth();
   const isEdit = !!client;
+  const [customFields, setCustomFields] = useState<Record<string, any>>({});
 
   const {
     register,
@@ -110,8 +112,10 @@ export function ClientForm({ open, onOpenChange, client }: ClientFormProps) {
         vatNumber: client.vatNumber ?? '',
         website: client.website ?? '',
       });
+      setCustomFields(client.customFields ?? {});
     } else {
       reset(DEFAULT_VALUES);
+      setCustomFields({});
     }
   }, [open, client, reset]);
 
@@ -133,6 +137,7 @@ export function ClientForm({ open, onOpenChange, client }: ClientFormProps) {
         vatNumber: data.vatNumber,
         website: data.website,
         createdBy: user.uid,
+        customFields,
       };
 
       if (isEdit && client) {
@@ -296,6 +301,12 @@ export function ClientForm({ open, onOpenChange, client }: ClientFormProps) {
               )}
             />
           </div>
+
+          <DynamicFieldRenderer
+            entity="clients"
+            values={customFields}
+            onChange={(key, val) => setCustomFields(prev => ({ ...prev, [key]: val }))}
+          />
 
           <DialogFooter>
             <Button

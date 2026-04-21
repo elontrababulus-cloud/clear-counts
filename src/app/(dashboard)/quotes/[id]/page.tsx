@@ -20,9 +20,10 @@ import {
   convertQuoteToInvoice,
   getNextCounter,
   formatInvoiceNumber,
+  subscribeToDoc,
 } from '@/lib/firestore/helpers';
 import { useAuth } from '@/hooks/useAuth';
-import type { QuoteDoc, QuoteStatus } from '@/types';
+import type { QuoteDoc, QuoteStatus, CompanySettings } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -49,6 +50,12 @@ export default function QuoteDetailPage({
   const [isEditing, setIsEditing] = useState(false);
   const [working, setWorking] = useState(false);
   const [emailOpen, setEmailOpen] = useState(false);
+  const [settings, setSettings] = useState<CompanySettings | null>(null);
+
+  useEffect(() => {
+    const unsub = subscribeToDoc<CompanySettings>('settings', 'company', setSettings);
+    return unsub;
+  }, []);
 
   useEffect(() => {
     const unsub = subscribeToDoc<QuoteDoc>('quotes', id, (data) => {
@@ -82,7 +89,7 @@ export default function QuoteDetailPage({
     setWorking(true);
     try {
       const counter = await getNextCounter('invoiceCounter');
-      const invoiceNumber = formatInvoiceNumber(counter);
+      const invoiceNumber = formatInvoiceNumber(counter, settings ?? {});
       const now = Timestamp.now();
       const dueDate = Timestamp.fromDate(
         new Date(Date.now() + 14 * 24 * 60 * 60 * 1000), // +14 days
