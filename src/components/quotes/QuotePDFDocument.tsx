@@ -7,9 +7,9 @@ import type { QuoteDoc, CompanySettings } from '@/types';
 Font.register({
   family: 'Inter',
   fonts: [
-    { src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2', fontWeight: 400 },
-    { src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2', fontWeight: 600 },
-    { src: 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFu_AZ9hiA.woff2', fontWeight: 700 },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-Regular.ttf', fontWeight: 400 },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-SemiBold.ttf', fontWeight: 600 },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-Bold.ttf', fontWeight: 700 },
   ],
 });
 
@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
   bold: { fontWeight: 700 },
   heading1: { fontSize: 24, fontWeight: 700, letterSpacing: -0.5 },
   heading2: { fontSize: 30, fontWeight: 700, letterSpacing: -1 },
+  // Use built-in 'Courier' for monospace to avoid "Font not registered" errors
+  mono: { fontFamily: 'Courier', fontSize: 10 },
   badge: {
     marginTop: 8,
     borderWidth: 1.5,
@@ -85,7 +87,7 @@ export function QuotePDFDocument({ quote, settings }: QuotePDFDocumentProps) {
           </View>
           <View style={tw('text-right')}>
             <Text style={styles.heading2}>QUOTE</Text>
-            <Text style={[tw('text-sm font-mono'), styles.secondaryText]}>{quote.quoteNumber}</Text>
+            <Text style={[tw('text-sm'), styles.secondaryText, styles.mono]}>{quote.quoteNumber}</Text>
             <View style={[styles.badge, statusStyle, { alignSelf: 'flex-end' }]}>
               <Text>{quote.status.toUpperCase()}</Text>
             </View>
@@ -124,36 +126,36 @@ export function QuotePDFDocument({ quote, settings }: QuotePDFDocumentProps) {
             <Text style={tw('flex-1 text-[9pt] font-bold text-right text-white')}>Total</Text>
           </View>
           {quote.lineItems.map((item, i) => (
-            <View key={item.id} style={tw(`flex-row p-3 border-b border-gray-100 ${i % 2 !== 0 ? 'bg-gray-50' : ''}`)}>
+            <View key={item.id} style={[tw('flex-row p-3 border-b border-gray-100'), { backgroundColor: i % 2 !== 0 ? '#f9fafb' : '#ffffff' }]}>
               <Text style={tw('flex-[3] text-[10pt]')}>{item.description}</Text>
               <Text style={tw('flex-1 text-[10pt] text-right')}>{item.quantity}</Text>
-              <Text style={tw('flex-1 text-[10pt] text-right font-mono')}>{fmt(item.unitPrice)}</Text>
+              <Text style={[tw('flex-1 text-[10pt] text-right'), styles.mono]}>{fmt(item.unitPrice)}</Text>
               <Text style={tw('flex-1 text-[10pt] text-right')}>{item.taxPercent}%</Text>
-              <Text style={tw('flex-1 text-[10pt] text-right font-bold')}>{fmt(item.total)}</Text>
+              <Text style={[tw('flex-1 text-[10pt] text-right font-bold'), styles.mono]}>{fmt(item.total)}</Text>
             </View>
           ))}
         </View>
 
         {/* Totals */}
         <View style={tw('flex-row justify-end mb-10')}>
-          <View style={tw('w-[200pt] pt-2')}>
+          <View style={[tw('w-[200pt] pt-2'), { borderTopWidth: 2, borderTopColor: '#0f172a' }]}>
              <View style={tw('flex-row justify-between mb-1')}>
               <Text style={[tw('text-[10pt]'), styles.secondaryText]}>Subtotal</Text>
-              <Text style={tw('text-[10pt] font-mono')}>{quote.currency} {fmt(subtotal)}</Text>
+              <Text style={[tw('text-[10pt]'), styles.mono]}>{quote.currency} {fmt(subtotal)}</Text>
             </View>
             {discountAmount > 0 && (
               <View style={tw('flex-row justify-between mb-1')}>
                 <Text style={[tw('text-[10pt]'), styles.secondaryText]}>Discount</Text>
-                <Text style={tw('text-[10pt] font-mono')}>-{quote.currency} {fmt(discountAmount)}</Text>
+                <Text style={[tw('text-[10pt]'), styles.mono]}>-{quote.currency} {fmt(discountAmount)}</Text>
               </View>
             )}
             <View style={tw('flex-row justify-between mb-2')}>
               <Text style={[tw('text-[10pt]'), styles.secondaryText]}>Tax</Text>
-              <Text style={tw('text-[10pt] font-mono')}>{quote.currency} {fmt(quote.taxTotal)}</Text>
+              <Text style={[tw('text-[10pt]'), styles.mono]}>{quote.currency} {fmt(quote.taxTotal)}</Text>
             </View>
             <View style={[tw('flex-row justify-between border-t border-gray-200 pt-2'), { borderTopWidth: 2, borderTopColor: '#0f172a' }]}>
               <Text style={tw('text-[12pt] font-bold')}>Total</Text>
-              <Text style={tw('text-[12pt] font-bold font-mono')}>{quote.currency} {fmt(quote.total)}</Text>
+              <Text style={[tw('text-[12pt] font-bold'), styles.mono]}>{quote.currency} {fmt(quote.total)}</Text>
             </View>
           </View>
         </View>
