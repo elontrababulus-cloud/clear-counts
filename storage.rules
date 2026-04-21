@@ -7,13 +7,10 @@ service firebase.storage {
       return request.auth != null;
     }
 
-    // Helper to check if user is an admin - we have to check Firestore for this
-    // Note: get() on firestore documents is supported in Storage rules!
     function isAdmin() {
-      return isAuthed() && (
-        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
-        request.auth.token.email in ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com']
-      );
+      // Direct email whitelist is more reliable for bootstrap/initial setup
+      return isAuthed() && 
+        request.auth.token.email in ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com'];
     }
 
     match /settings/{allPaths=**} {

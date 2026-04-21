@@ -77,13 +77,23 @@ export function InvoicePreview({ invoice, settings, inline }: InvoicePreviewProp
     >
       {/* ── Header ── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '36px' }}>
-        <div>
-          <div style={{ fontSize: '22px', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.5px' }}>
-            {companyName}
-          </div>
-          {companyEmail && (
-            <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '4px' }}>{companyEmail}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {settings?.logoUrl && (
+            <img 
+              src={settings.logoUrl} 
+              alt="Logo" 
+              crossOrigin="anonymous"
+              style={{ height: '52px', width: 'auto', display: 'block' }} 
+            />
           )}
+          <div>
+            <div style={{ fontSize: '20px', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.5px', lineHeight: 1.1 }}>
+              {companyName}
+            </div>
+            {companyEmail && (
+              <div style={{ fontSize: '12px', color: '#6b7280', marginTop: '3px' }}>{companyEmail}</div>
+            )}
+          </div>
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: '28px', fontWeight: 800, color: '#0f172a', letterSpacing: '-1px' }}>
