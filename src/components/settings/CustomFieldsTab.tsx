@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Plus, Trash2, GripVertical, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { create, remove, update } from '@/lib/firestore/helpers';
+import { create, softDelete, update } from '@/lib/firestore/helpers';
 import { useCustomFields } from '@/hooks/useCustomFields';
 import type { CustomFieldDefinition, CustomFieldType } from '@/types';
 import { Button } from '@/components/ui/button';
@@ -110,7 +110,7 @@ export function CustomFieldsTab() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this field? Data stored in this field will remain in documents but won\'t be visible in forms.')) return;
     try {
-      await remove('custom_fields', id);
+      await softDelete('custom_fields', id);
       toast.success('Field deleted');
     } catch (err) {
       console.error(err);

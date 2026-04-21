@@ -17,7 +17,7 @@ import {
   subscribeToDoc,
 } from '@/lib/firestore/helpers';
 import { useAuth } from '@/hooks/useAuth';
-import type { QuoteDoc, ClientDoc, LineItem } from '@/types';
+import type { QuoteDoc, ClientDoc, LineItem, CompanySettings } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

@@ -11,6 +11,7 @@ export function useCustomFields(entity: CustomFieldDefinition['entity']) {
     const q = query(
       collection(db, 'custom_fields'),
       where('entity', '==', entity),
+      where('status', '!=', 'deleted'),
       orderBy('order', 'asc')
     );
 
