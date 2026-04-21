@@ -30,5 +30,15 @@ service firebase.storage {
       allow read: if isAuthed();
       allow write: if isAuthed() && request.auth.uid == userId;
     }
+
+    match /invoices/{invoiceId}/{allPaths=**} {
+      // Staff can manage generated invoices
+      allow read, write: if isAuthed();
+    }
+
+    match /quotes/{quoteId}/{allPaths=**} {
+      // Staff can manage generated quotes
+      allow read, write: if isAuthed();
+    }
   }
 }
