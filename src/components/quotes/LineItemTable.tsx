@@ -74,7 +74,7 @@ export function LineItemTable({ items, onChange, disabled }: LineItemTableProps)
           <thead>
             <tr className="border-b bg-muted/40">
               <th className={cn(TH, 'w-full')}>Description</th>
-              <th className={cn(TH, 'w-20 text-right')}>Qty</th>
+              <th className={cn(TH, 'w-24 text-center')}>Qty</th>
               <th className={cn(TH, 'w-28 text-right')}>Unit Price</th>
               <th className={cn(TH, 'w-20 text-right')}>Tax %</th>
               <th className={cn(TH, 'w-28 text-right')}>Total</th>
@@ -104,7 +104,7 @@ export function LineItemTable({ items, onChange, disabled }: LineItemTableProps)
                 {/* Qty */}
                 <td className="px-2 py-1">
                   <Input
-                    className={NUM_INPUT}
+                    className={cn(NUM_INPUT, 'text-center')}
                     type="number"
                     min="0"
                     step="1"
