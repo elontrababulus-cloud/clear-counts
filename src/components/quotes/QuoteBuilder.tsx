@@ -81,7 +81,13 @@ export function QuoteBuilder({ quote, onSaved }: QuoteBuilderProps) {
   const [clientSearch, setClientSearch] = useState('');
   const [clientDropdownOpen, setClientDropdownOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<ClientDoc | null>(null);
-
+  useEffect(() => {
+    getAll<ClientDoc>('clients', {
+      constraints: [
+        where('status', 'in', ['active', 'prospect']),
+        orderBy('companyName'),
+      ],
+      pageSize: 200,
     }).then(({ data }) => setClients(data));
   }, []);
 

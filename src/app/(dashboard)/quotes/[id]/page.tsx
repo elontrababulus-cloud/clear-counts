@@ -13,14 +13,12 @@ import {
   Mail,
 } from 'lucide-react';
 import { toast } from 'sonner';
-import {
   subscribeToDoc,
   update,
   softDelete,
   convertQuoteToInvoice,
   getNextCounter,
   formatInvoiceNumber,
-  subscribeToDoc,
 } from '@/lib/firestore/helpers';
 import { useAuth } from '@/hooks/useAuth';
 import type { QuoteDoc, QuoteStatus, CompanySettings } from '@/types';
