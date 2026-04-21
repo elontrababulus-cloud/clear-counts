@@ -15,14 +15,26 @@ Font.register({
 
 const tw = createTw({
   theme: {
-    extend: {
-      colors: {
-        primary: '#0f172a',    // Tailwind Slate 900
-        secondary: '#64748b',  // Tailwind Slate 500
-        unpaid: '#2563eb',
-        paid: '#16a34a',
-        partial: '#d97706',
-        overdue: '#dc2626',
+    fontFamily: {
+      sans: ['Inter'],
+    },
+    colors: {
+      primary: '#0f172a',
+      secondary: '#64748b',
+      unpaid: '#2563eb',
+      paid: '#16a34a',
+      partial: '#d97706',
+      overdue: '#dc2626',
+      white: '#ffffff',
+      gray: {
+        50: '#f9fafb',
+        100: '#f3f4f6',
+        200: '#e5e7eb',
+        300: '#d1d5db',
+        700: '#374151',
+      },
+      red: {
+        200: '#fecaca',
       },
     },
   },
@@ -71,7 +83,7 @@ export function InvoicePDFDocument({ invoice, settings }: InvoicePDFDocumentProp
           <View style={tw('text-right')}>
             <Text style={tw('text-3xl font-bold tracking-tighter')}>INVOICE</Text>
             <Text style={tw('text-sm text-secondary font-mono')}>{invoice.invoiceNumber}</Text>
-            <View style={tw(`mt-2 self-end border-[1.5pt] rounded-full px-3 py-1 ${statusColors[invoice.status] ?? ''}`)}>
+            <View style={tw(`mt-2 self-end border-[1.5pt] rounded-full px-3 py-1 ${statusColors[invoice.status] || 'text-secondary border-secondary'}`)}>
               <Text style={tw('text-[8pt] font-bold')}>{invoice.status.toUpperCase()}</Text>
             </View>
           </View>
