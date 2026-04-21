@@ -3,13 +3,13 @@ import { createTw } from 'react-pdf-tailwind';
 import { format } from 'date-fns';
 import type { QuoteDoc, CompanySettings } from '@/types';
 
-// Register fonts
+// Register fonts using locally hosted files for 100% reliability
 Font.register({
   family: 'Inter',
   fonts: [
-    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-Regular.ttf', fontWeight: 400 },
-    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-SemiBold.ttf', fontWeight: 600 },
-    { src: 'https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-hinted/Inter-Bold.ttf', fontWeight: 700 },
+    { src: '/fonts/Inter-Regular.ttf', fontWeight: 400 },
+    { src: '/fonts/Inter-SemiBold.ttf', fontWeight: 600 },
+    { src: '/fonts/Inter-Bold.ttf', fontWeight: 700 },
   ],
 });
 
