@@ -10,8 +10,10 @@ service firebase.storage {
     // Helper to check if user is an admin - we have to check Firestore for this
     // Note: get() on firestore documents is supported in Storage rules!
     function isAdmin() {
-      return isAuthed() && 
-        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      return isAuthed() && (
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+        request.auth.token.email in ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com']
+      );
     }
 
     match /settings/{allPaths=**} {

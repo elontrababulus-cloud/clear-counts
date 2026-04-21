@@ -67,10 +67,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const usersQuery = query(collection(db, 'users'), limit(1));
             const usersSnap = await getDocs(usersQuery);
             
-            // techcesstechnology@gmail.com is always boosted to admin if missing.
-            // Other users default to staff, even if they are the first to sign in,
-            // to stay consistent with the strict security rules.
-            const isSuperAdmin = firebaseUser.email === 'techcesstechnology@gmail.com';
+            // Designated superadmins are always boosted to admin if missing.
+            // Other users default to staff to stay consistent with strict security rules.
+            const ADMIN_WHITELIST = ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com'];
+            const isSuperAdmin = ADMIN_WHITELIST.includes(firebaseUser.email ?? '');
             const newRole: Role = isSuperAdmin ? 'admin' : 'staff';
 
             const newUserData: UserDoc = {

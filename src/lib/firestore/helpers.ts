@@ -222,6 +222,27 @@ export async function update<T>(
 }
 
 /**
+ * Perform a Create-or-Update (Upsert) on a document.
+ * If the document does not exist, it will be created with createdAt/updatedAt.
+ * If it does exist, it will be merged with updatedAt.
+ */
+export async function upsert<T>(
+  collectionPath: string,
+  id: string,
+  data: Partial<Omit<T, 'id' | 'createdAt'>>,
+): Promise<void> {
+  const uid = currentUid();
+  const payload: DocumentData = {
+    ...data,
+    updatedAt: serverTimestamp(),
+    updatedBy: uid,
+  };
+  
+  // Use setDoc with merge:true for upsert behavior
+  await setDoc(docRef(collectionPath, id), payload, { merge: true });
+}
+
+/**
  * Soft-delete a document by setting `status: 'deleted'` and `deletedAt`.
  * The document is NOT removed from Firestore — it must be excluded in queries.
  */

@@ -18,7 +18,7 @@ import {
   Key,
   Database
 } from 'lucide-react';
-import { subscribeToDoc, update } from '@/lib/firestore/helpers';
+import { subscribeToDoc, update, upsert } from '@/lib/firestore/helpers';
 import { storage } from '@/lib/firebase';
 import { useAuth } from '@/hooks/useAuth';
 import type { CompanySettings } from '@/types';
@@ -87,7 +87,7 @@ export default function SettingsPage() {
 
   // Admin-only guard
   useEffect(() => {
-    if (role && role !== 'admin') {
+    if (role && !['admin'].includes(role)) {
       toast.error('Only administrators can access settings');
       router.replace('/dashboard');
     }
@@ -179,7 +179,7 @@ export default function SettingsPage() {
         },
         ...(logoUrl ? { logoUrl } : {}),
       };
-      await update<CompanySettings>('settings', 'company', payload);
+      await upsert<CompanySettings>('settings', 'company', payload);
       toast.success('Settings saved');
     } catch (err) {
       console.error(err);
@@ -212,7 +212,7 @@ export default function SettingsPage() {
     router.push(`/settings?tab=${id}`);
   };
 
-  if (role && role !== 'admin') {
+  if (role && !['admin'].includes(role)) {
     return (
       <div className="flex flex-col items-center gap-4 py-24 text-center">
         <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center">

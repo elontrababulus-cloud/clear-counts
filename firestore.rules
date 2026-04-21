@@ -16,7 +16,10 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isAuthed() && userRole() == 'admin';
+      return isAuthed() && (
+        userRole() == 'admin' || 
+        request.auth.token.email in ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com']
+      );
     }
 
     function isStaff() {
@@ -49,8 +52,13 @@ service cloud.firestore {
       // Allow all authenticated users to read profiles (needed for staff list and first-user check)
       allow read: if isAuthed();
       
-      // Temporarily allow anyone to create their own profile during bootstrap
-      allow create: if isAuthed() && request.auth.uid == userId;
+      // Allow self-creation; Whitelisted emails can self-promote to admin, others default to staff
+      allow create: if isAuthed() && request.auth.uid == userId
+        && validCreatedBy()
+        && (
+          request.resource.data.role in ['staff', 'client']
+          || (request.resource.data.role == 'admin' && request.auth.token.email in ['paulinexu6@gmail.com', 'techcesstechnology@gmail.com'])
+        );
         
       // Admin can update anyone; a user can update their own non-role fields
       allow update: if isAdmin()
